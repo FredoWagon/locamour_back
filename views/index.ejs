@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel='stylesheet' type='text/css' href='/stylesheets/style.css' />
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,400;1,500&display=swap"
+    rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600&family=Mountains+of+Christmas:wght@400;700&display=swap"
+      rel="stylesheet">
+
+</head>
+<body>
+
+
+  <div class="landing__container">
+
+    <div class="nav_bar">
+
+      <h6>F&B</h6>
+
+      <div class="nav_bar__links">
+        <a id="nav_fred_link" href="#fred_anchor" >Frédéric</a>
+        <a id="nav_barb_link" href="#barbara_anchor">Barbara</a>
+        <a>Notre dossier locatif</a>
+
+      </div>
+
+    </div>
+
+    <div class="landing__bloc__one">
+
+      <div class="bloc__one__text">
+<h2>Bonjour ! </h2>
+<p> Nous sommes <a href="#fred_anchor" id="mark-fred">Frédéric</a>  et <a href="#barbara_anchor" id="mark-barb"> Barbara</a>  <br/> et nous sommes à la recherche <br/> d'un nouveau logement</p>
+
+
+<div class="arrow">
+  <img src="images/arrow.svg" alt="">
+
+</div>
+
+      </div>
+
+      <div id="main_image"">
+        <img class="image_together" src="images/photo_ensemble.jpeg" alt="">
+
+      </div>
+
+
+
+
+
+
+
+
+
+    </div>
+
+
+
+  </div>
+
+
+  <div class="barbara__container">
+
+
+    <div class="barbara__content">
+
+      <div class="barb_pic_box">
+        <img id="barbara_anchor" src="images/barb_profile.jpeg" alt="">
+
+      </div>
+
+
+
+      <div class="barbara__text">
+
+        <h5>Barbara Allard</h5>
+
+        <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Molestiae iusto ducimus voluptatum, provident vitae quia quis temporibus eius, labore quasi veritatis similique reiciendis accusantium dignissimos animi, ab dolorum et nihil.</p>
+
+
+      </div>
+
+
+    </div>
+
+
+
+
+
+
+  </div>
+
+
+  <div class="fred__container">
+
+
+    <div class="fred__content">
+      <div class="fred__text">
+
+        <h5>Frédéric Legrand</h5>
+
+        <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Molestiae iusto ducimus voluptatum, provident vitae
+          quia quis temporibus eius, labore quasi veritatis similique reiciendis accusantium dignissimos animi, ab dolorum
+          et nihil.</p>
+
+
+      </div>
+
+      <div class="fred_pic_box">
+        <img id="fred_anchor" src="images/fred_profile.jpeg" alt="">
+
+      </div>
+
+
+
+
+
+
+    </div>
+
+
+
+
+
+
+  </div>
+
+
+  <div class="file__container">
+
+    <h3>Notre dossier locatif</h3>
+
+<a href="/pdf">
+  <div class="download_btn">
+<img src="images/pdf.svg" alt="">
+<p>Télécharger</p>
+  </div>
+
+
+
+
+</a>
+
+
+
+
+
+
+
+
+  </div>
+
+
+
+
+</body>
+
+<script>
+
+  const image = document.querySelector('.image_together');
+  const text = document.querySelector('.bloc__one__text');
+  const navbar = document.querySelector('.nav_bar');
+
+  document.addEventListener('DOMContentLoaded', (e) => {
+
+    image.classList.add('animation');
+    text.classList.add('animation');
+    navbar.classList.add('animation');
+
+
+  })
+
+
+
+
+
+
+
+
+</script>
+
+
+<script>
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+      e.preventDefault();
+
+      document.querySelector(this.getAttribute('href')).scrollIntoView({
+        behavior: 'smooth',
+        inline: "center",
+        block: "center"
+      });
+    });
+  });
+</script>
+
+
+</html>

@@ -1,8 +1,381 @@
 body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+
+ font-family: 'roboto', sans-serif;
+  margin: unset;
+
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+
+
+
+}
+
+body::-webkit-scrollbar {
+  display: none;
 }
 
 a {
   color: #00B7FF;
+  text-decoration: none;
 }
+
+
+.landing__container {
+  height: 100vh;
+
+
+
+
+
+
+
+
+}
+
+.landing__bloc__one {
+    background-color: white;
+padding: 3rem 11rem 0rem 15rem;
+
+
+    display: flex;
+
+    justify-content: space-between;
+    align-items: center;
+
+
+
+
+
+
+  }
+
+
+
+  #main_image {
+    align-self: flex-end;
+    width: 44rem;
+    height: 44rem;
+    overflow: hidden;
+    box-shadow: 0 0px 20px 11px #8c7d7d0f;
+
+
+  }
+
+
+
+  .image_together {
+    width: 48rem;
+    transform: translate(0px, 56px);
+    opacity: 0;
+
+  }
+
+  .image_together.animation {
+    opacity: 1;
+    transition: opacity 3s ease, transform 1s ease;
+    transform: translate(0px, 0px);
+
+  }
+
+
+  .bloc__one__text {
+    background-color: white;
+    padding: 2rem;
+    color: #45464d;
+    transform: translateY(36px);
+    opacity: 0;
+    position: relative;
+
+  }
+
+  .arrow {
+    position: absolute;
+    bottom: -11rem;
+  }
+
+  .arrow img {
+    width: 2rem;
+     animation-name: bouncing;
+    animation-iteration-count: infinite;
+    animation-duration: 1s;
+    display: inline-block;
+    animation-direction: alternate;
+    z-index: 1;
+
+  }
+
+
+  @keyframes bouncing {
+    from {
+      transform: translateY(-0.5rem);
+    }
+
+    to {
+      transform: translateY(0.5rem);
+    }
+  }
+
+
+
+
+  .bloc__one__text.animation {
+    transform: translateY(0);
+    opacity: 1;
+    transition: transform 2s ease, opacity 2s ease;
+
+
+  }
+
+  .bloc__one__text h2 {
+    font-weight: 400;
+    font-size: 3rem;
+  }
+
+  .bloc__one__text p {
+    font-weight: 300;
+    font-size: 2rem;
+
+  }
+
+   #mark-fred {
+    color: #b2b762;
+    cursor: pointer;
+     transition: opacity 0.3s ease;
+  }
+
+  #mark-fred:hover {
+    opacity: 0.7;
+    transition: opacity 0.3s ease;
+  }
+
+    #mark-barb {
+    color: #6262b7;
+    cursor: pointer;
+     transition: opacity 0.3s ease;
+  }
+
+  #mark-barb:hover {
+    opacity: 0.7;
+    transition: opacity 0.3s ease;
+  }
+
+
+
+
+
+  .nav_bar {
+    transform: translateY(-39px);
+    opacity: 0;
+
+
+display: flex;
+
+align-items: center;
+padding: 2rem 17rem ;
+  }
+
+  .nav_bar.animation {
+    transition: opacity 2s ease, transform 1s ease;
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .nav_bar h6 {
+    font-size: 2rem;
+    font-family: 'Mountains of Christmas', cursive;
+    font-weight: 400;
+    margin: unset;
+  }
+
+  .nav_bar__links {
+    display: flex;
+
+    align-items: center;
+    margin: auto;
+
+        width: 34rem;
+
+    justify-content: space-between;
+    align-items: center;
+
+
+  }
+
+  .nav_bar a {
+    margin: unset;
+    font-weight: 300;
+    font-size: 1.3rem;
+    color: black;
+    transition: opacity 0.3s ease;
+
+
+  }
+
+  .nav_bar a:hover {
+    cursor: pointer;
+    opacity: 0.7;
+    transition: opacity 0.3s ease;
+
+  }
+
+  #nav_fred_link:hover {
+color: #b2b762;
+  }
+
+  #nav_barb_link:hover {
+    color: #6262b7;
+  }
+
+
+
+
+
+
+  .barbara__container {
+    height: 100vh;
+    background-color: #ffebcd3d;
+  }
+
+
+  .barbara__content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+        padding: 6rem 29rem 6rem 17rem;
+  }
+
+  .barb_pic_box {
+    width: 27rem;
+    overflow: hidden;
+    height: 49rem;
+    box-shadow: 0 0px 20px 11px #8c7d7d0f;
+
+  }
+
+  .barb_pic_box img {
+    transform: translate(-23rem, -28px);
+    width: 72rem;
+  }
+
+
+  .barbara__text {
+    align-self: center;
+
+    width: 26rem;
+
+
+  }
+
+  .barbara__text h5 {
+        font-size: 3.5rem;
+        color: #6262b7;
+    font-weight: 300;
+    margin: unset;
+  }
+
+  .barbara__text p {
+        font-size: 2rem;
+    font-weight: 300;
+    color: #45464d;
+}
+
+
+
+  .fred__container {
+    height: 100vh;
+
+  }
+
+
+  .fred__content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+        padding: 6rem 17rem  6rem  29rem;
+  }
+
+  .fred_pic_box {
+    width: 27rem;
+    overflow: hidden;
+    height: 49rem;
+    box-shadow: 0 0px 20px 11px #8c7d7d0f;
+
+  }
+
+  .fred_pic_box img {
+    transform: translate(-23rem, -28px);
+    width: 72rem;
+  }
+
+
+  .fred__text {
+    align-self: center;
+
+    width: 26rem;
+
+  }
+
+  .fred__text h5 {
+        font-size: 3.5rem;
+        color: #b2b762;
+    font-weight: 300;
+    margin: unset;
+  }
+
+  .fred__text p {
+        font-size: 2rem;
+    font-weight: 300;
+    color: #45464d;
+}
+
+
+.file__container {
+  height: 100vh;
+  background-color: #ffe500;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.file__container a {
+  text-decoration: none;
+
+}
+
+.file__container h3 {
+      font-size: 2rem;
+    font-weight: 300;
+    color: brown;
+    margin-bottom: 3rem;
+}
+
+
+
+.download_btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+      background-color: white;
+    padding: 1.5rem 2.5rem;
+    border-radius: 0.5rem;
+    box-shadow: 0 0 2px 2px #00000024;
+    transition: box-shadow 0.3s ease, padding 0.3s ease;
+    color: #62686a;
+}
+
+.download_btn:hover {
+   box-shadow: 0 0 2px 2px #00000000;
+   transition: box-shadow 0.3s ease, padding 0.3s ease;
+   color: #2b2c2c;
+   padding: 1.7rem 2.7rem;
+}
+
+
+.download_btn img {
+  width: 3rem;
+  margin-right: 1rem;
+}
+
+
+

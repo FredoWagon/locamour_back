@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+
+</head>
+
+<body>
+  <p>CACA</p>
+
+<h1>
+  <%=  firstAnnonce.ownerName  %>
+</h1>
+<p>CACA</p>
+
+ <div >
+
+  <form id="form">
+
+    <input type="text" id="city" name="city" placeholder="Commnune">
+    <input type="text" name="adress" id="adress" placeholder="Adresse">
+    <input type="text" name="rentPrice" id="rentPrice" placeholder="Prix de location sans charge">
+    <input type="text" id="ownerName" name="ownerName" placeholder="Nom du proprio">
+    <input type="email" id="contactEmail" name="contactEmail" placeholder="Email du proprio">
+    <input type="text" id="contactPhone" name="contactPhone" placeholder="Numéro du proprio">
+    <input type="text" id="chargePrice" name="chargePrice" placeholder="Cout des charges">
+    <input type="text" id="imageUrl" name="imageUrl" placeholder="Url de l'image">
+    <input type="text" id="annonceUrl" name="annonceUrl" placeholder="Url de l'annonce">
+    <label for="fredMail">Fred</label>
+    <input type="radio" id="fredMail" name="userMail">
+    <label for="fredMail">Barb</label>
+    <input type="radio" id="barbMail" name="userMail">
+
+    <button type="submit">Soumettre</button>
+
+  </form>
+
+
+</div>
+
+
+
+
+
+ <script>
+
+   const myForm = document.getElementById('form');
+
+   const adress = document.getElementById('adress');
+   const rentPrice = document.getElementById('rentPrice');
+   const city = document.getElementById('city');
+   const ownnerName = document.getElementById('ownerName');
+   const contactEmail = document.getElementById('contactEmail');
+   const contactPhone = document.getElementById('contactPhone');
+   const chargePrice = document.getElementById('chargePrice');
+   const imageUrl = document.getElementById('imageUrl');
+   const annonceUrl = document.getElementById('annonceUrl');
+   const fredMail = document.getElementById('fredMail');
+
+
+    myForm.addEventListener('submit', function (event) {
+       event.preventDefault();
+      const formData =
+      {
+        adress: adress.value,
+        rentPrice: rentPrice.value,
+        city: city.value,
+        ownnerName: ownnerName.value,
+        contactEmail: contactEmail.value,
+        contactPhone: contactPhone.value,
+        chargePrice: chargePrice.value,
+        imageUrl: imageUrl.value,
+        annonceUrl: annonceUrl.value,
+        fredMail: fredMail.value
+      }
+
+       axios.post("/add",
+       {
+         formData
+       }
+       ).then( response => {
+        console.log(response.data.message)
+        console.log(response.data.data);
+       }
+       ).catch( err => console.log(err))
+
+
+     })
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ </script>
+
+</body>
+
+</html>
