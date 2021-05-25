@@ -51,15 +51,29 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-// On connect le module mongoose à la DB
-mongoose.connect(process.env.DATABASE,
-  {
-    useNewUrlParser: true,
-    useUnifiedTopology: true
-  })
-  .then(() => console.log('Connexion à MongoDB réussie !'))
-  .catch(() => console.log('Connexion à MongoDB échouée !'));
 
+
+// CONNECT DB EN ASYNC
+
+const connectDB = catchAsync(async () => {
+  await mongoose.connect(process.env.DATABASE,
+    {
+      useNewUrlParser: true,
+      useUnifiedTopology: true
+    });
+  console.log('Connexion à MongoDB réussie !')
+})
+
+
+// // On connect le module mongoose à la DB
+// mongoose.connect(process.env.DATABASE,
+//   {
+//     useNewUrlParser: true,
+//     useUnifiedTopology: true
+//   })
+//   .then(() => console.log('Connexion à MongoDB réussie !'))
+//   .catch(() => console.log('Connexion à MongoDB échouée !'));
+connectDB();
 
 
 
