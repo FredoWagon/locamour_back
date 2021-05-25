@@ -4,6 +4,7 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 
+
 const bodyParser = require('body-parser');
 
 const { mail } = require('./lib/nodemailer');
@@ -14,7 +15,7 @@ require('dotenv').config({ path: '.env' });
 
 const mongoose = require('mongoose');
 
-const { AppError, sendErrorHandler } = require('./lib/utils');
+const { AppError, sendErrorHandler, catchAsync } = require('./lib/utils');
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
