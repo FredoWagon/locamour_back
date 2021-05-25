@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel='stylesheet' type='text/css' href='/stylesheets/style.css' />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"
+    integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+
+</head>
+
+<body>
+
+
+  <div class="container">
+
+    <%- include('../views/partials/formulaire.ejs') %>
+
+
+      <div class="inject">
+        <% annonces.forEach(element=> { %>
+          <%- include('../views/partials/cards', {annonce: element}) %>
+            <% }); %>
+      </div>
+
+
+
+
+  </div>
+
+
+  <div style="display: none;" class="hide">
+    <div class="annonce_card">
+      <div class="annonce_card__content">
+        <div class="titles">
+          <h6 class="select-city">Saint maxence</h6>
+          <p class="select-adress">15 rue du moine</p>
+        </div>
+        <div class="info_card">
+          <div class="details_card">
+            <img src="images/money-bag.svg" alt="">
+            <h6>Loyer : </h6>
+            <p class="select-rentPrice">600 €</p>
+          </div>
+          <div class="details_card">
+            <img src="images/oil-price.svg" alt="">
+            <h6>Charges :</h6>
+            <p class="select-chargePrice">32 €</p>
+          </div>
+          <div class="details_card">
+            <img src="images/house.svg" alt="">
+            <h6>Maison </h6>
+            <p class="select-houseSurf">52 m2</p>
+          </div>
+          <div class="details_card">
+            <img src="images/plant.svg" alt="">
+            <h6>Jardin</h6>
+            <p class="select-gardenSurf">32 m2</p>
+          </div>
+        </div>
+
+        <div class="bottom_btn">
+          <a href="" target="_blank" class="annonce-btn">Voir l'annonce</a>
+        </div>
+
+        <div class="validation">
+          <img class="select-visited" src="images/time-left.svg" alt="">
+          <img class="select-downloaded" src="images/pdf-file.svg" alt="">
+        </div>
+        <div class="card_image">
+          <img class="select-photo" src="images/maison_1.jpg" alt="">
+        </div>
+      </div>
+      <div onclick="togglo(this)" class="info_btn">
+        <img src="images/contact.svg" alt="">
+      </div>
+
+      <div class="flip-info">
+        <h6>Gérome dupluroir</h6>
+        <p>mail : fdsfds±@gmail.com</p>
+        <p>téléphone : 055644521</p>
+      </div>
+    </div>
+    <img class="select-visited" src="images/check.svg" alt="">
+  </div>
+
+
+
+  <script>
+
+    const myForm = document.getElementById('form');
+
+    const adress = document.getElementById('adress');
+    const rentPrice = document.getElementById('rentPrice');
+    const city = document.getElementById('city');
+    const ownnerName = document.getElementById('ownerName');
+    const contactEmail = document.getElementById('contactEmail');
+    const contactPhone = document.getElementById('contactPhone');
+    const chargePrice = document.getElementById('chargePrice');
+    const houseSurf = document.getElementById('houseSurface');
+    const annonceUrl = document.getElementById('annonceUrl');
+    const gardenSurf = document.getElementById('gardenSurface');
+    const image = document.getElementById('file');
+
+
+
+    // TESTING
+
+    const inject = document.querySelector('.inject');
+    const newCard = document.querySelector('.annonce_card')
+
+
+
+    myForm.addEventListener('submit', async (event) => {
+      event.preventDefault();
+      const formDatax = new FormData(myForm);
+      formDatax.append('image', image.files[0]);
+      formDatax.delete('file');
+
+      const formData =
+      {
+        adress: adress.value,
+        rentPrice: rentPrice.value,
+        city: city.value,
+        ownerName: ownnerName.value,
+        contactEmail: contactEmail.value,
+        contactPhone: contactPhone.value,
+        chargePrice: chargePrice.value,
+        houseSurface: houseSurf.value,
+        gardenSurface: gardenSurf.value,
+        image: image.files[0]
+
+      }
+
+      const response = await fetch("/admin/new",
+        {
+          method: 'POST',
+          body: formDatax
+        }
+      );
+      const result = await response.json();
+
+      console.log(result.message)
+      console.log(result.data)
+
+      createNewCard(result.data);
+
+    })
+
+
+    const createNewCard = (data) => {
+
+      const clone = newCard.cloneNode(true);
+      const firstChild = inject.firstChild;
+      clone.querySelector('.select-city').innerText = data.city;
+      clone.querySelector('.select-adress').innerText = data.adress;
+      clone.querySelector('.select-rentPrice').innerText = `${data.rentPrice} €`;
+      clone.querySelector('.select-chargePrice').innerText = `${data.chargePrice} €`;
+      clone.querySelector('.select-houseSurf').innerText = `${data.houseSurface} m2`;
+      clone.querySelector('.select-gardenSurf').innerText = `${data.gardenSurface} m2`;
+      clone.querySelector('.annonce-btn').href = `${data.annonceUrl}`;
+      clone.querySelector('.select-photo').src = `${data.cloudinary_url}`;
+
+      if (data.visited) {
+        clone.querySelector('.select-visited').src = `images/check.svg`;
+      } else {
+        clone.querySelector('.select-visited').src = `images/time-left.svg`;
+      }
+      if (data.downloaded) {
+        clone.querySelector('.select-downloaded').src = `images/pdf-file.svg`;
+      } else {
+        clone.querySelector('.select-downloaded').src = `images/time-left.svg`;
+      }
+      if (data.visited && data.downloaded) {
+        clone.querySelector('.validation').classList.add('validation--validated');
+      }
+
+
+
+
+
+
+      inject.insertBefore(clone, firstChild);
+
+
+
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  </script>
+
+</body>
+
+</html>

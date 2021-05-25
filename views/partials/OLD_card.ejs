@@ -1,0 +1,69 @@
+<div class="annonce_card">
+  <div class="annonce_card__content">
+    <div class="titles">
+      <h6 class="select-city">
+        <%= typeof annonce.city !='undefined' ? annonce.city : "" %>
+      </h6>
+      <p class="select-adress">
+        <%= typeof annonce.adress !='undefined' ? annonce.adress : "" %>
+      </p>
+    </div>
+    <div class="info_card">
+      <div class="details_card">
+        <img src="images/money-bag.svg" alt="">
+        <h6>Loyer : </h6>
+        <p class="select-rentPrice">
+          <%= typeof annonce.rentPrice !='undefined' ? annonce.rentPrice : "" %> €
+        </p>
+      </div>
+      <div class="details_card">
+        <img src="images/oil-price.svg" alt="">
+        <h6>Charges :</h6>
+        <p class="select-chargePrice">
+          <%= typeof annonce.chargePrice !='undefined' ? annonce.chargePrice : "" %> €
+        </p>
+      </div>
+      <div class="details_card">
+        <img src="images/house.svg" alt="">
+        <h6>Maison </h6>
+        <p class="select-houseSurf">
+          <%= typeof annonce.houseSurface !='undefined' ? annonce.houseSurface : "" %> m2
+        </p>
+      </div>
+      <div class="details_card">
+        <img src="images/plant.svg" alt="">
+        <h6>Jardin</h6>
+        <p class="select-gardenSurf">
+          <%= typeof annonce.gardenSurface !='undefined' ? annonce.gardenSurface : "" %> m2
+        </p>
+      </div>
+    </div>
+    <div class="bottom_btn">
+      <a href="<%= typeof annonce.annonceUrl !='undefined' ? annonce.annonceUrl : "" %>" target="_blank"
+        class="annonce-btn">Voir l'annonce</a>
+    </div>
+    <div class="validation">
+      <img class="select-visited" src="<%= annonce.visited ? " images/check.svg" : "images/time-left.svg" %>" alt="">
+      <img class="select-downloaded" src="<%= annonce.downloaded ? " images/pdf-file.svg" : "images/time-left.svg" %>"
+      alt="">
+    </div>
+    <div class="card_image">
+      <img class="select-photo" src="<%= typeof annonce.cloudinary_url != 'undefined' ? annonce.cloudinary_url : "" %>"
+        alt="">
+    </div>
+  </div>
+  <div onclick="togglo(this)" class="info_btn">
+    <img src="images/contact.svg" alt="">
+  </div>
+  <div class="flip-info">
+    <h6>
+      <%= typeof annonce.ownerName !='undefined' ? annonce.ownerName : "" %>
+    </h6>
+    <p>
+      <%= typeof annonce.contactEmail !='undefined' ? annonce.contactEmail : "" %>
+    </p>
+    <p>
+      <%= typeof annonce.contactPhone !='undefined' ? annonce.contactPhone : "" %>
+    </p>
+  </div>
+</div>

@@ -6,91 +6,1005 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
-  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-
+  <link rel='stylesheet' type='text/css' href='/stylesheets/style.css' />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"
+    integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
 </head>
 
 <body>
-  <p>CACA</p>
-
-<h1>
-  <%=  firstAnnonce.ownerName  %>
-</h1>
-<p>CACA</p>
-
- <div >
-
-  <form id="form">
-
-    <input type="text" id="city" name="city" placeholder="Commnune">
-    <input type="text" name="adress" id="adress" placeholder="Adresse">
-    <input type="text" name="rentPrice" id="rentPrice" placeholder="Prix de location sans charge">
-    <input type="text" id="ownerName" name="ownerName" placeholder="Nom du proprio">
-    <input type="email" id="contactEmail" name="contactEmail" placeholder="Email du proprio">
-    <input type="text" id="contactPhone" name="contactPhone" placeholder="Numéro du proprio">
-    <input type="text" id="chargePrice" name="chargePrice" placeholder="Cout des charges">
-    <input type="text" id="imageUrl" name="imageUrl" placeholder="Url de l'image">
-    <input type="text" id="annonceUrl" name="annonceUrl" placeholder="Url de l'annonce">
-    <label for="fredMail">Fred</label>
-    <input type="radio" id="fredMail" name="userMail">
-    <label for="fredMail">Barb</label>
-    <input type="radio" id="barbMail" name="userMail">
-
-    <button type="submit">Soumettre</button>
-
-  </form>
 
 
-</div>
+  <div class="dashboard__container">
+    <div class="dashboard__box">
+      <div class="dashboard__left">
+        <div class="dashboard__title">
+          <img src="images/google.svg" alt="">
+          <h6>Dashboard</h6>
+          <?xml version="1.0"?>
+          <svg class="svg_refresh" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+            xmlns:svgjs="http://svgjs.com/svgjs" version="1.1" width="512" height="512" x="0" y="0"
+            viewBox="0 0 512 512" style="enable-background:new 0 0 512 512" xml:space="preserve" class="">
+            <g>
+              <path xmlns="http://www.w3.org/2000/svg"
+                d="m61.496094 279.609375c-.988282-8.234375-1.496094-16.414063-1.496094-23.609375 0-107.402344 88.597656-196 196-196 50.097656 0 97 20.199219 131.5 51.699219l-17.300781 17.601562c-3.898438 3.898438-5.398438 9.597657-3.898438 15 1.800781 5.097657 6 9 11.398438 10.199219 3.019531.605469 102.214843 32.570312 95.898437 31.300781 8.035156 2.675781 19.917969-5.894531 17.703125-17.699219-.609375-3.023437-22.570312-113.214843-21.300781-106.902343-1.199219-5.398438-5.101562-9.898438-10.5-11.398438-5.097656-1.5-10.800781 0-14.699219 3.898438l-14.699219 14.398437c-45.300781-42.296875-107.503906-68.097656-174.101562-68.097656-140.699219 0-256 115.300781-256 256v.597656c0 8.457032.386719 14.992188.835938 19.992188.597656 6.625 5.480468 12.050781 12.003906 13.359375l30.816406 6.160156c10.03125 2.007813 19.050781-6.402344 17.839844-16.5zm0 0"
+                fill="#8f92ad" data-original="#000000" style="" class="" />
+              <path xmlns="http://www.w3.org/2000/svg"
+                d="m499.25 222.027344-30.90625-6.296875c-10.042969-2.046875-19.125 6.371093-17.890625 16.515625 1.070313 8.753906 1.546875 17.265625 1.546875 23.753906 0 107.398438-88.597656 196-196 196-50.097656 0-97-20.199219-131.5-52l17.300781-17.300781c3.898438-3.898438 5.398438-9.597657 3.898438-15-1.800781-5.101563-6-9-11.398438-10.199219-3.019531-.609375-102.214843-32.570312-95.898437-31.300781-5.101563-.898438-10.203125.601562-13.5 4.199219-3.601563 3.300781-5.101563 8.699218-4.203125 13.5.609375 3.019531 22.574219 112.210937 21.304687 105.898437 1.195313 5.402344 5.097656 9.902344 10.496094 11.398437 6.261719 1.570313 11.488281-.328124 14.699219-3.898437l14.402343-14.398437c45.296876 42.300781 107.5 69.101562 174.398438 69.101562 140.699219 0 256-115.300781 256-256v-.902344c0-6.648437-.242188-13.175781-.796875-19.664062-.570313-6.628906-5.433594-12.074219-11.953125-13.40625zm0 0"
+                fill="#8f92ad" data-original="#000000" style="" class="" />
+            </g>
+          </svg>
+
+        </div>
+        <div class="add__btn">
+          <img src="images/plus.svg" alt="">
+          <p>Ajouter une annonce</p>
+        </div>
+        <div class="menu__list active_menu anonces_all">
+          <img src="images/list.svg" alt="">
+          <p>Ttes les annonces</p>
+          <p class="all-number">
+            <%= availablesAnnonces.length %>
+          </p>
+        </div>
+        <div class="menu__list annonces_validated">
+          <img src="images/check-grey.svg" alt="">
+          <p>Annonces validées</p>
+          <p>
+            <%= completeAnnoncesLength %>
+          </p>
+        </div>
+        <div class="menu__list annonces_unvalidated">
+          <img src="images/time-left-grey.svg" alt="">
+          <p>Non validées</p>
+          <p class="unvalidated-number">
+            <%= unvalidatedLength %>
+          </p>
+        </div>
+        <div class="menu__list annonces_archived">
+          <img src="images/trash.svg" alt="">
+          <p>Archivées</p>
+          <p class="archived-number">
+            <%= archivedAnnoncesLength %>
+          </p>
+        </div>
+      </div>
+      <div class="dashboard__middle">
+        <div class="dashboard__search-bar">
+          <img src="images/loupe.svg" alt="">
+          <input class="seach_input" type="text" placeholder="Search">
+        </div>
+        <div class="middle__header">
+          <h5 class="menu_main_title">Ttes les annonces</h5>
+          <div class="middle__header__filter">
+            <img src="images/filter-results-button.svg" alt="">
+            <p>Filtrer</p>
+          </div>
+        </div>
+        <div class="card__container">
+          <% allAnnonces.forEach(element=> { %>
+            <%- include('../views/partials/cards', {annonce: element}) %>
+              <% }); %>
+        </div>
+      </div>
+      <div class="dashboard__right">
+
+        <div class="right__notif">
+          <div class="notif-bel">
+            <img src="images/notification.svg" alt="">
+            <% if (typeof newNotif.length !=undefined && newNotif.length !=0 ) { %>
+              <div class="notif-number">
+
+                <p class="notifLength">
+                  <%= newNotif.length %>
+
+                </p>
+
+
+              </div>
+              <% } %>
+
+
+
+          </div>
+
+          <span class=" dash_span actived_span"><img src="images/pie-chart.svg" alt="">
+
+          </span>
+
+          <h5><%= time.split(' ').splice(0, 2).join(' ')  %> </h5>
+
+
+          <div class="notification_modal">
+            <% newNotif.forEach(notif=> { %>
+
+              <div class="notification_bloc newtofifs" notifid="<%=notif._id%>">
+                <img src="<%= typeof notif.annonceImgUrl != "undefined" ? notif.annonceImgUrl : 'images/house.png' %>"
+                alt="">
+                <div class="notification_text">
+                  <div class="text_notif_top">
+                    <h6>
+                      <%= notif.annonceCity%>
+                    </h6>
+                    <p>
+                      <%= notif.annonceAdress%>
+                    </p>
+                  </div>
+                  <div class="text_notif_bottom">
+                    <p>
+                      <%= notif.message %>
+                        <p>
+                        <div class="notif_svg">
+                          <img class="card_dl_image" src="<%= notif.notifNature === "visit" ? "images/check.svg"
+                            : "images/pdf-file.svg" %> "
+                          alt="">
+                          <p></p>
+                        </div>
+                  </div>
+                  <p style="display: none;">
+                    <%=notif.annonceId%>
+                  </p>
+                </div>
+
+                <p id="notifdate">
+                  <%= notif.date.split(' ').splice(0, 2).join(' ')%> </p>
+
+
+
+
+              </div>
+
+                    <% }); %>
+
+          </div>
+
+          <div class="activity_line"></div>
+
+        </div>
+
+        <div class="activity__panel">
+
+          <span>Activité <div class="line_deco"></div></span>
+          <div class="statis_container">
+            <div class="statis_item">
+              <img src="images/annonce.svg" alt="">
+              <h3 class="info_panel_annonce">
+                <%= allAnnonces.length %>
+              </h3>
+              <p>Annonces</p>
+
+            </div>
+            <div class="statis_item">
+              <img src="images/bar-chart.svg" alt="">
+              <h3>
+                <%= `${ratio} %` %>
+              </h3>
+              <p>Ratio de réponse</p>
+            </div>
+
+            <div class="statis_item">
+              <img src="images/browser.svg" alt="">
+              <h3><%= visitNumber %> </h3>
+              <p>Visite moyen.</p>
+
+            </div>
+
+            <div class="statis_item">
+              <img src="images/file.svg" alt="">
+              <h3>
+                1.2
+              </h3>
+              <p>DL moyen</p>
+            </div>
+
+
+
+          </div>
+          <div class="info_panel_sites">
+            <span>Sites d'annonces <div class="line_deco"></div></span>
+            <div class="sites_container">
+
+              <% sites.forEach(site => { %>
+                <a href="<%= site.url%>" target="_blank"><%= site.name %></a>
+
+              <% });  %>
+
+
+            </div>
+          </div>
+
+          <div class="notif_history">
+            <div class="history_btn">
+              Historique des notifications <img src="images/bleach.svg" alt="">
+            </div>
+            <div class="notif_history_container">
+              <% allNotif.forEach(notif => { %>
+                <div class="notification_bloc" notifAnnonceid="<%=notif.annonceId%>">
+                  <img src="<%= typeof notif.annonceImgUrl != "undefined" ? notif.annonceImgUrl : 'images/house.png' %>"
+                  alt="">
+                  <div class="notification_text">
+                    <div class="text_notif_top">
+                      <h6>
+                        <%= notif.annonceCity%>
+                      </h6>
+                      <p>
+                        <%= notif.annonceAdress%>
+                      </p>
+                    </div>
+                    <div class="text_notif_bottom">
+                      <p>
+                        <%= notif.message %>
+                          <p>
+                          <div class="notif_svg">
+                            <img class="card_dl_image" src="<%= notif.notifNature === "visit" ? "images/check.svg"
+                              : "images/pdf-file.svg" %> "
+                            alt="">
+                            <p></p>
+                          </div>
+                    </div>
+                    <p style="display: none;">
+                      <%=notif.annonceId%>
+                    </p>
+                  </div>
+
+                  <p id="notifdate">
+                    <%= notif.date.split(' ').splice(0, 2).join(' ')%> </p>
+
+
+
+
+                              </div>
+
+
+             <% }); %>
+            </div>
+
+          </div>
+
+        </div>
+
+
+
+
+        <div class="annonce__panel">
+          <img class="panelImg"
+            src="https://images.unsplash.com/photo-1554995207-c18c203602cb?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80"
+            alt="">
+          <div class="right__panel__text">
+            <h6 class="panelCity">Cadaujac</h6>
+            <p class="panelAdress">1171 Rue du port de Grima</p>
+            <div class="bullet_text">
+              <p class="houseSurf">Maison : 89 m2</p>
+                <p>•</p>
+              <p class="gardenSurf">Jardin : 32 m2</p>
+            </div>
+            <div class="price__content">
+              <div class="price_area">
+                <h3 id="locprice" class="main_price">856 €</h3>
+                <p>Loyer</p>
+              </div>
+
+              <div class="price_area charge_area">
+                <h3 id="charprice" class="charge_price">
+                  56 €
+                </h3>
+                <p>Charges</p>
+              </div>
+            </div>
+
+            <div class="panel__map">
+              <iframe class="mapsIframe" width="100%" height="100%" style="border:0" loading="lazy" allowfullscreen src="https://www.google.com/maps/embed/v1/place?key=AIzaSyCmdowdqarb8OCWsXvyVCA_f5x7zRqg0Ow
+                            &q=15+Rue+Jules+Lebrun,+35000+Rennes&zoom=10">
+              </iframe>
+
+            </div>
+
+            <div class="panel__bouton">
+              <a href="" target="_blank" class="annonceBtn">Voir l' annonce</a>
+                    <button class="contactBtn">Infos</button>
+
+
+              </div>
+
+
+
+              <div class="checked_visitation">
+
+
+                <div class="checked_image">
+                  <img class="panel_vis_image" src="images/time-left.svg" alt="">
+                  <p class="vis_number">2</p>
+
+                </div>
+
+                <div class="checked_image">
+                  <img class="panel_dl_image" src="images/check.svg" alt="images/check.svg">
+                  <p class="dl_number">10</p>
+
+
+                </div>
+
+
+
+              </div>
+
+
+
+
+          </div>
+        </div>
+
+
+        <div class="info_panel">
+          <div class="info_panel_content">
+
+            <div class="proprio_avatar">
+              <img src="images/propro.svg" alt="">
+            </div>
+            <div class="proprio_info_final">
+              <span>Propriétaire <p class="proprio_name">Mr Gogo jean</p></span>
+              <span>Email : <p class="proprio_email">fdssdf@gmail.com</p></span>
+              <span>Tel : <p class="proprio_tel">0556541254</p></span>
+            </div>
+
+            <h5>Notifications</h5>
 
 
 
 
 
- <script>
 
-   const myForm = document.getElementById('form');
+            <div class="annonce_notif_container">
+              <% allNotif.forEach(notif=> { %>
+                <div class="notification_bloc info_notif_by_annonce" notifAnnonceid="<%=notif.annonceId%>">
+                  <img src="<%= typeof notif.annonceImgUrl != "undefined" ? notif.annonceImgUrl : 'images/house.png' %>"
+                  alt="">
+                  <div class="notification_text">
+                    <div class="text_notif_top">
+                      <h6>
+                        <%= notif.annonceCity%>
+                      </h6>
+                      <p>
+                        <%= notif.annonceAdress%>
+                      </p>
+                    </div>
+                    <div class="text_notif_bottom">
+                      <p>
+                        <%= notif.message %>
+                          <p>
+                          <div class="notif_svg">
+                            <img class="card_dl_image" src="<%= notif.notifNature === "visit" ? "images/check.svg"
+                              : "images/pdf-file.svg" %> "
+                            alt="">
+                            <p></p>
+                          </div>
+                    </div>
+                    <p style="display: none;">
+                      <%=notif.annonceId%>
+                    </p>
+                  </div>
 
-   const adress = document.getElementById('adress');
-   const rentPrice = document.getElementById('rentPrice');
-   const city = document.getElementById('city');
-   const ownnerName = document.getElementById('ownerName');
-   const contactEmail = document.getElementById('contactEmail');
-   const contactPhone = document.getElementById('contactPhone');
-   const chargePrice = document.getElementById('chargePrice');
-   const imageUrl = document.getElementById('imageUrl');
-   const annonceUrl = document.getElementById('annonceUrl');
-   const fredMail = document.getElementById('fredMail');
+                  <p id="notifdate">
+                    <%= notif.date.split(' ').splice(0, 2).join(' ')%> </p>
 
 
-    myForm.addEventListener('submit', function (event) {
-       event.preventDefault();
-      const formData =
-      {
-        adress: adress.value,
-        rentPrice: rentPrice.value,
-        city: city.value,
-        ownnerName: ownnerName.value,
-        contactEmail: contactEmail.value,
-        contactPhone: contactPhone.value,
-        chargePrice: chargePrice.value,
-        imageUrl: imageUrl.value,
-        annonceUrl: annonceUrl.value,
-        fredMail: fredMail.value
+
+
+                                            </div>
+
+               <% }); %>
+
+
+            </div>
+
+          </div>
+
+
+        </div>
+
+
+
+
+
+
+
+
+      </div>
+
+
+      <div class="form_modal">
+        <div class="modal__box">
+          <div class="modal__content">
+            <%- include('../views/partials/formulaire.ejs') %>
+
+
+
+              <img class="btn_modal" src="images/croix.svg" alt="">
+          </div>
+
+
+        </div>
+
+
+
+      </div>
+
+
+      <div class="modif_modal">
+        <div class="modal__box">
+          <div class="modal__content">
+            <%- include('../views/partials/modifmodal.ejs') %>
+
+
+
+              <img class="modif_btn_modal" src="images/croix.svg" alt="">
+          </div>
+
+
+        </div>
+
+      </div>
+
+
+
+    </div>
+    <div style="display: none;" class="lib">
+      <img class="card_dl_image" src="images/check.svg" alt="">
+      <img class="card_dl_image" src="images/pdf-file.svg" alt="">
+      <img class="card_vis_image" src="images/time-left.svg" alt="">
+
+
+
+      <!-- COQUILLE VIDE CARTE-->
+
+      <div class="card_final card-skel" dataId="">
+        <img class="house_image" src="" alt="">
+        <div class="card_final__content">
+          <div class="card_final__content__top">
+            <div class="top__title">
+
+
+              <div class="top__title__left">
+                <h6 class="cardCity"> </h6>
+                <span></span>
+                <p class="cardAdress"> </p>
+              </div>
+
+
+              <div class="card__options">
+                <img src="images/more.svg" alt="">
+
+                <div class="options_select">
+                  <p class="modif_annonce">Modifier</p>
+                  <p class="delete_annonce">Supprimer</p>
+                </div>
+
+              </div>
+            </div>
+            <div class="bottom__title">
+              <p class="card_house_surf"> </p>
+              <p>•</p>
+              <p class="card_garden_surf"></p>
+            </div>
+          </div>
+          <div class="card_final__content__bottom">
+            <div class="price__content">
+              <div class="price_area">
+                <h3 class="main_price"></h3>
+                <p>Loyer</p>
+              </div>
+              <div class="price_area">
+                <h3 class="charge_price"></h3>
+                <p>Charges</p>
+              </div>
+            </div>
+            <p class="ola">Ajouter tel jour</p>
+          </div>
+        </div>
+        <div class="checked_visitation">
+          <div class="checked_image">
+            <img class="card_vis_image" src="" alt="">
+            <p class="card_nmbvis"> </p>
+          </div>
+          <div class="checked_image">
+            <img class="card_dl_image" src="" alt="">
+            <p class="card_nmbdl"></p>
+          </div>
+        </div>
+        <div class="archive_box">
+          <div class="archive-style">
+            <p>Archivé</p>
+          </div>
+
+
+        </div>
+        <div style="display: none;" class="hidden_info">
+          <p class="hide_proprio_name">
+
+          </p>
+          <p class="hide_proprio_email">
+
+          </p>
+          <p class="hide_proprio_tel">
+
+          </p>
+        </div>
+      </div>
+
+
+
+
+    </div>
+
+    <div class="delete_modal">
+      <div class="delete_modal__content">
+        <h6>Voulez vous archiver cette annonce ?</h6>
+        <div class="delete_modal_btns">
+          <button class="modal_btn_valide">Valider</button>
+          <button class="modal_btn_annule">Annuler</button>
+        </div>
+        <p class="delete_id"></p>
+
+      </div>
+
+    </div>
+
+
+    <script>
+
+      // Champs panel
+      const panelCity = document.querySelector('.panelCity');
+      const panelAdress = document.querySelector('.panelAdress');
+      const houseSurf = document.querySelector('.houseSurf');
+      const gardenSurf = document.querySelector('.gardenSurf');
+      const locprice = document.querySelector('#locprice');
+      const panelImg = document.querySelector('.panelImg');
+      const mapsIframe = document.querySelector('.mapsIframe');
+      const charge_area = document.querySelector('.charge_area');
+      const charprice = document.querySelector('#charprice');
+      const dl_number = document.querySelector('.dl_number');
+      const vis_number = document.querySelector('.vis_number');
+      const panel_dl_image = document.querySelector('.panel_dl_image');
+      const panel_vis_image = document.querySelector('.panel_vis_image');
+      const panel_annonce_url = document.querySelector('.annonceBtn');
+      const allnotif = document.querySelectorAll('.newtofifs');
+      const notifLength = document.querySelector('.notifLength');
+      const refresh = document.querySelector('.svg_refresh');
+
+      const notifNumber = document.querySelector('.notif-number');
+      const textArea = document.querySelector('#text');
+
+      const historyBtn = document.querySelector('.history_btn');
+      const activityPanel = document.querySelector('.activity__panel');
+
+
+
+      const deleteid = document.querySelector('.delete_id');
+      const deleteModal = document.querySelector('.delete_modal');
+
+      const modalBtnAnnule = document.querySelector('.modal_btn_annule');
+      const modalBtnValide = document.querySelector('.modal_btn_valide');
+
+      const notifHistory = document.querySelector('.notif_history');
+
+
+
+      //menus
+      const anoncesAll = document.querySelector('.anonces_all');
+      const annoncesValid = document.querySelector('.annonces_validated');
+      const annoncesUnvalid = document.querySelector('.annonces_unvalidated');
+      const annoncesArchived = document.querySelector('.annonces_archived');
+      const allMenu = document.querySelectorAll('.menu__list');
+      const cardContainer = document.querySelector('.card__container');
+      let cardsList = cardContainer.querySelectorAll('.card-skel');
+      const mainTitle = document.querySelector('.menu_main_title');
+      const imageLoaded = document.getElementById('output');
+      const contactBtn = document.querySelector('.contactBtn');
+      const info_panel = document.querySelector('.info_panel');
+      const dashSpan = document.querySelector('.dash_span');
+      const infoNotifByAnnonce = document.querySelectorAll('.info_notif_by_annonce');
+
+      const infoAnnonceNumber = document.querySelector('.info_panel_annonce');
+
+
+      //modif_modal
+
+      const modifModal = document.querySelector('.modif_modal');
+      const modiModalBtn = document.querySelector('.modif_btn_modal');
+
+      modiModalBtn.addEventListener('click', (event) => {
+          modifModal.classList.remove('activated_modal');
+          setTimeout(() => {
+            document.querySelector('#modif_output').src = ""
+            modifModal.style.display = "none"
+          }, 500);
+
+
+
+
+
+        })
+
+      //annonce_info
+
+      const annonceNotifContainer = document.querySelector('.annonce_notif_container');
+
+
+      //history notif btn
+
+      historyBtn.addEventListener('click', function(event) {
+        this.parentElement.classList.toggle('openHistory')
+
+      })
+
+
+
+
+
+
+
+
+
+
+
+      dashSpan.addEventListener('click', function(event) {
+        notifHistory.classList.remove('openHistory');
+        activityPanel.style.opacity = "1";
+        closeInfoPanel();
+         cardsList.forEach(card => {
+            card.classList.remove('activ_card')
+        })
+        annoncePanel.style.opacity = "0"
+        annoncePanel.classList.remove('active_panel')
+        dashSpan.classList.add('actived_span')
+
+
+
+      })
+
+      contactBtn.addEventListener('click', function (event) {
+        openInfoPanel();
+      })
+
+      const openInfoPanel = function (params) {
+        if (info_panel.style.display != "block") {
+          info_panel.style.display = "block";
+
+        } else {
+          closeInfoPanel();
+        }
+
+
+      }
+      const closeInfoPanel = () => {
+
+        info_panel.style.display = "none"
+
+
+
+
       }
 
-       axios.post("/add",
-       {
-         formData
-       }
-       ).then( response => {
-        console.log(response.data.message)
-        console.log(response.data.data);
-       }
-       ).catch( err => console.log(err))
+
+      const InfoPanelAnimation = (card) => {
+        let cardId = card.attributes.dataid.value
+        console.log("card id")
+        console.log(cardId)
+
+        const proprioName = card.querySelector('.hide_proprio_name').innerText
+        const proprioEmail = card.querySelector('.hide_proprio_email').innerText
+        const proprioPhone = card.querySelector('.hide_proprio_tel').innerText
 
 
-     })
+        infoNotifByAnnonce.forEach(notif => {
+          console.log(notif.notifannonceid)
+          if (cardId != notif.attributes.notifannonceid.value) {
+            notif.style.display = "none"
+          } else {
+            notif.style.display = "flex"
+          }
+        });
+
+        const infoPanelProName = document.querySelector('.proprio_name')
+        const infoPanelProMail = document.querySelector('.proprio_email')
+        const infoPanelProPhone = document.querySelector('.proprio_tel')
+        infoPanelProName.innerText = proprioName
+        infoPanelProMail.innerText = proprioEmail
+        infoPanelProPhone.innerText = proprioPhone
+
+
+
+
+      }
+
+
+
+
+      //compteur annocnes
+      const allCounter = document.querySelector('.all-number');
+      const unvalidatedNumber = document.querySelector('.unvalidated-number');
+      const archivedNumber = document.querySelector('.archived-number');
+
+
+
+
+
+      //modif et delete
+
+      cardsList.forEach(function (card) {
+        let deleteBtnCard = card.querySelector('.delete_annonce');
+        let modifBtnCard = card.querySelector('.modif_annonce');
+
+        deleteBtnCard.addEventListener('click', function (event) {
+          closeInfoPanel();
+          let theid = card.attributes.dataid.value;
+          deleteid.innerText = theid;
+
+          deleteModal.style.display = "flex";
+        })
+
+        modifBtnCard.addEventListener('click', function(event) {
+          let cardIdModif = card.attributes.dataid.value;
+          handleUpdateCard(cardIdModif);
+        })
+
+
+
+      })
+
+
+      // gestion de la modif
+
+      const handleUpdateCard = async (cardId) => {
+        const response = await fetch('/annonce/getAnnonce', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ annonceId: cardId })
+        }
+        )
+        const annonce = await response.json();
+        console.log(annonce);
+
+        document.querySelector('#modif_city').value = annonce.annonce.city
+        document.querySelector('#modif_adress').value = annonce.annonce.adress
+        document.querySelector('#modif_rentPrice').value = annonce.annonce.rentPrice
+        document.querySelector('#modif_ownerName').value = annonce.annonce.ownerName
+        document.querySelector('#modif_contactEmail').value = annonce.annonce.contactEmail
+        document.querySelector('#modif_contactPhone').value = annonce.annonce.contactPhone
+        document.querySelector('#modif_chargePrice').value = annonce.annonce.chargePrice
+        document.querySelector('#modif_houseSurface').value = annonce.annonce.houseSurface
+        document.querySelector('#modif_gardenSurface').value = annonce.annonce.gardenSurface
+        document.querySelector('#modif_annonceUrl').value = annonce.annonce.annonceUrl
+        document.querySelector('#modif_output').src = annonce.annonce.cloudinary_url
+
+        document.querySelector('#annonceId').value = annonce.annonce._id
+        modifModal.style.display = "block"
+        setTimeout(() => {
+          modifModal.classList.add('activated_modal');
+        }, 1);
+
+      }
+
+
+
+
+
+      modalBtnValide.addEventListener('click', function (event) {
+        let findCardId = deleteid.innerText;
+        deleteModal.style.display = "none";
+        cardsList.forEach(card => {
+
+
+          if (card.attributes.dataid.value === findCardId) {
+            card.classList.remove('activ_card')
+            card.classList.add('archived_card');
+          }
+        })
+
+        const countNumberAll = parseInt(allCounter.innerText);
+        const unvalidNumberCount = parseInt(unvalidatedNumber.innerText);
+        const archivedNumberCout = parseInt(archivedNumber.innerText);
+        allCounter.innerText = countNumberAll - 1;
+        unvalidatedNumber.innerText = unvalidNumberCount - 1;
+        archivedNumber.innerText = archivedNumberCout + 1;
+
+
+        fetch('/annonce/archive', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ data: findCardId })
+        }).then(response => response.json()
+        ).then(response => console.log(response)
+        ).catch(err => console.log(err))
+
+
+
+      })
+
+      modalBtnAnnule.addEventListener('click', function (event) {
+        deleteModal.style.display = "none";
+      })
+
+
+      refresh.addEventListener('click', (event) => {
+        window.location.href = window.location.href;
+      })
+
+
+      allMenu.forEach(function (menu) {
+        menu.addEventListener('click', function (event) {
+          notifHistory.classList.remove('openHistory');
+          activityPanel.style.opacity = "1";
+          closeInfoPanel();
+          allMenu.forEach(menu => {
+            if (this === menu) {
+              menu.classList.add('active_menu')
+            } else {
+              menu.classList.remove('active_menu')
+            }
+          })
+
+
+
+          switch (true) {
+            case this.classList.contains('anonces_all'):
+              console.log("bonjour")
+              selectAllcard();
+
+              break;
+            case this.classList.contains('annonces_validated'):
+              selectValidCard();
+
+              break;
+            case this.classList.contains('annonces_unvalidated'):
+              selectUnvalidCard();
+
+              break;
+            case this.classList.contains('annonces_archived'):
+              selectArchived();
+
+              break;
+
+            default:
+              break;
+          }
+
+
+
+
+        })
+
+      })
+
+      const selectArchived = card => {
+        dashSpan.classList.add('actived_span')
+        annoncePanel.style.opacity = "0"
+        annoncePanel.classList.remove('active_panel')
+        cardsList.forEach(card => {
+          if (card.classList.contains('archived_card')) {
+            card.style.display = "flex"
+          } else {
+            card.style.display = "none"
+          }
+        })
+        mainTitle.innerText = "Annonces archivées"
+
+
+      }
+
+      const selectAllcard = () => {
+        dashSpan.classList.add('actived_span')
+        annoncePanel.style.opacity = "0"
+        annoncePanel.classList.remove('active_panel')
+        cardsList.forEach(card => {
+          if (!card.classList.contains('archived_card')) {
+            card.style.display = "flex"
+          } else {
+            card.style.display = "none"
+          }
+        })
+        mainTitle.innerText = "Ttes les annonces"
+      }
+
+      const selectValidCard = () => {
+        dashSpan.classList.add('actived_span')
+        annoncePanel.style.opacity = "0"
+        annoncePanel.classList.remove('active_panel')
+        cardsList.forEach(card => {
+          if ((card.querySelector('.card_dl_image').attributes.isdownloaded.value === "false") && (!card.classList.contains('.archived_card'))) {
+            card.style.display = "none"
+          } else {
+            card.style.display = "flex"
+          }
+        })
+        mainTitle.innerText = "Annonces validées"
+      }
+
+      const selectUnvalidCard = card => {
+        dashSpan.classList.add('actived_span')
+        annoncePanel.style.opacity = "0"
+        annoncePanel.classList.remove('active_panel')
+        cardsList.forEach(card => {
+          if ((card.querySelector('.card_dl_image').attributes.isdownloaded.value === "true") || (card.classList.contains('archived_card'))) {
+            card.style.display = "none"
+          } else {
+            card.style.display = "flex"
+          }
+        })
+        mainTitle.innerText = "Annonces non validées"
+
+      }
+
+
+
+
+
+
+
+
+
+
+
+
+      //notif
+      const notifBel = document.querySelector('.notif-bel');
+      const notifModal = document.querySelector('.notification_modal');
+
+      // Annonce panel
+      const annoncePanel = document.querySelector('.annonce__panel');
+
+
+      window.addEventListener('click', (event) => {
+        console.log(event.target)
+        if ((!notifBel.contains(event.target)) && (!notifModal.contains(event.target))) {
+          console.log('ola')
+          closeNotifModal()
+        }
+
+      })
+
+
+
+      const toggleNotifModal = () => {
+        notifModal.classList.toggle('active-notif-modal');
+
+      }
+
+      const closeNotifModal = () => {
+        notifModal.classList.remove('active-notif-modal');
+
+      }
+
+      notifBel.addEventListener('click', toggleNotifModal)
+
+      allnotif.forEach(notif => {
+        notif.addEventListener('click', function (event) {
+          this.remove();
+
+          if (notifModal.childElementCount === 0) {
+            notifNumber.remove();
+          } else {
+            notifLength.innerText = notifModal.childElementCount;
+          }
+
+          console.log("coté client");
+          console.log(notif.attributes.notifid.value)
+          fetch("/notification/update",
+            {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify({ data: notif.attributes.notifid.value })
+            }
+          ).then(response => response.json()
+          ).then(response => console.log(response)
+          ).catch(err => console.log(err))
+
+
+
+
+
+
+        })
+      })
 
 
 
@@ -105,7 +1019,464 @@
 
 
 
- </script>
+      // search
+      const seach_input = document.querySelector('.seach_input');
+
+      let allCards = document.querySelectorAll('.card_final');
+      allCards.forEach((card) => {
+        card.addEventListener('click', function (event) {
+          notifHistory.classList.remove('openHistory');
+          event.preventDefault();
+          closeNotifModal();
+          closeInfoPanel();
+          dashSpan.classList.remove('actived_span');
+          panelAnimation(this);
+
+        })
+      })
+
+      const panelAnimation = (card) => {
+        allCards.forEach(cardId => {
+          if (cardId.attributes.dataid.value != card.attributes.dataid.value) {
+            cardId.classList.remove('activ_card');
+          } else {
+            cardId.classList.add('activ_card');
+          }
+        })
+        const cardId = card.attributes.dataid.value
+
+
+
+
+        if (annoncePanel.classList.contains('active_panel')) {
+
+          if (card.attributes.dataid.value != annoncePanel.attributes.cardid.value) {
+
+            activityPanel.style.opacity = "0";
+            annoncePanel.style.opacity = "0"
+            annoncePanel.classList.remove('active_panel')
+
+            setTimeout(() => {
+              panelPopulate(card);
+              annoncePanel.style.opacity = "1"
+              annoncePanel.classList.add('active_panel')
+              annoncePanel.setAttribute('cardId', cardId)
+
+            }, 300);
+
+
+          } else {
+            activityPanel.style.opacity = "1";
+            dashSpan.classList.add('actived_span')
+            annoncePanel.style.opacity = "0"
+            annoncePanel.classList.remove('active_panel');
+            card.classList.remove('activ_card');
+          }
+
+        } else {
+
+
+          panelPopulate(card);
+          annoncePanel.style.opacity = "1"
+
+          annoncePanel.classList.add('active_panel')
+          annoncePanel.setAttribute('cardId', cardId)
+
+        }
+
+
+
+      }
+
+
+      //POPULATE THE PANEL
+
+      const panelPopulate = (data) => {
+        InfoPanelAnimation(data);
+        console.log(data)
+        //city
+        const cityName = data.querySelector('.cardCity').innerText;
+        panelCity.innerText = cityName;
+        //adress
+        const adressName = data.querySelector('.cardAdress').innerText;
+        panelAdress.innerText = adressName;
+        //housesurf
+        houseSurf.innerText = data.querySelector('.card_house_surf').innerText;
+        //gardensurf
+        gardenSurf.innerText = data.querySelector('.card_garden_surf').innerText;
+        //locprice
+        locprice.innerText = data.querySelector('.main_price').innerText;
+        //img
+        panelImg.attributes.src.value = data.querySelector('.house_image').attributes.src.value;
+        mapsIframe.attributes.src.value = `https://www.google.com/maps/embed/v1/place?key=AIzaSyCmdowdqarb8OCWsXvyVCA_f5x7zRqg0Ow&q=${cityName}+${adressName}&zoom=10`
+        //dl number
+        dl_number.innerText = data.querySelector('.card_nmbdl').innerText;
+        vis_number.innerText = data.querySelector('.card_nmbvis').innerText;
+        //dl_logo
+        panel_dl_image.attributes.src.value = data.querySelector('.card_dl_image').attributes.src.value;
+        panel_vis_image.attributes.src.value = data.querySelector('.card_vis_image').attributes.src.value;
+        //annoncebtn
+        panel_annonce_url.href = data.attributes.annonceUrl.value
+
+
+
+
+
+        if (data.querySelector('.charge_price') != undefined) {
+          charge_area.style.display = 'block';
+          charprice.innerText = data.querySelector('.charge_price').innerText;
+
+        } else {
+          charge_area.style.display = 'none';
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+      };
+
+
+      seach_input.addEventListener('keyup', function (event) {
+        annoncePanel.style.opacity = "0"
+        annoncePanel.classList.remove('active_panel')
+        notifHistory.classList.remove('openHistory');
+
+        allCards.forEach(cardId => {
+          cardId.classList.remove('activ_card');
+        })
+
+
+
+        searchBar();
+
+
+      });
+
+
+
+      const searchBar = (letter) => {
+        console.log(letter)
+        activityPanel.style.opacity = "1";
+        closeInfoPanel();
+        dashSpan.classList.add('actived_span')
+
+        let allCard = document.querySelectorAll('.card-skel');
+
+        allCard.forEach(card => {
+          if ((card.querySelector('.cardCity').innerText.toLowerCase().includes(seach_input.value.toLowerCase()) && (!card.classList.contains('archived_card')))) {
+
+
+            card.style.display = "flex"
+
+          } else {
+            card.style.display = "none"
+          }
+        })
+
+
+
+
+
+
+
+
+      }
+
+
+      const openBtn = document.querySelector('.add__btn');
+      const closeBtn = document.querySelector('.btn_modal');
+      const modal = document.querySelector('.form_modal');
+      const inputs = document.querySelectorAll('input');
+
+      openBtn.addEventListener('click', (event) => {
+        event.preventDefault();
+        closeNotifModal();
+        modal.style.display = "block"
+        setTimeout(() => {
+          modal.classList.add('activated_modal');
+        }, 1);
+
+      })
+
+      closeBtn.addEventListener('click', (event) => {
+        modal.classList.remove('activated_modal');
+        setTimeout(() => {
+          modal.style.display = "none"
+        }, 500);
+
+        inputs.forEach(input => {
+          input.value = ""
+        })
+        textArea.value = ""
+        imageLoaded.src = ""
+
+
+
+      })
+
+      modal.addEventListener('mousedown', function (event) {
+
+        console.log(event.target)
+        if (event.target.classList.contains('modal__box')) {
+          modal.classList.remove('activated_modal');
+          setTimeout(() => {
+            modal.style.display = "none"
+          }, 500);
+          inputs.forEach(input => {
+            input.value = ""
+          })
+          textArea.value = ""
+          imageLoaded.src = ""
+          closeModifModal()
+        }
+
+      })
+
+      modifModal.addEventListener('mousedown', function (event) {
+
+          console.log(event.target)
+          if (event.target.classList.contains('modal__box')) {
+            modifModal.classList.remove('activated_modal');
+            setTimeout(() => {
+              document.querySelector('#modif_output').src = ""
+              modifModal.style.display = "none"
+            }, 500);
+
+
+
+
+          }
+
+        })
+
+
+
+
+
+
+      //update fetching
+
+
+      const modificationForm = document.getElementById('modif_form');
+      const modifImage = document.getElementById('modif_file');
+
+
+      modificationForm.addEventListener('submit', async (event) => {
+        event.preventDefault();
+        console.log("ouais c'est submit")
+        const formData = new FormData(modificationForm);
+        formData.append('image', modifImage.files[0]);
+        formData.delete('file');
+
+        const response = await fetch("/annonce/updateAnnonce",
+          {
+            method: 'POST',
+            body: formData
+          }
+        );
+
+        const result = await response.json();
+        console.log(result)
+        const newCardValue = result.updatedAnnonce
+
+        const annonceCard = document.querySelector(`[dataid='${newCardValue._id}']`);
+        console.log("LA CARTE A CHANGER")
+        console.log(annonceCard)
+        annonceCard.querySelector('.cardCity').innerText = newCardValue.city
+        annonceCard.querySelector('.cardAdress').innerText = newCardValue.adress
+        annonceCard.querySelector('.card_house_surf').innerText = newCardValue.houseSurface
+        annonceCard.querySelector('.card_garden_surf').innerText = newCardValue.gardenSurface
+        annonceCard.querySelector('.charge_price').innerText = newCardValue.chargePrice
+        annonceCard.querySelector('.main_price').innerText = newCardValue.rentPrice
+        annonceCard.querySelector('.house_image').attributes.src.value = newCardValue.cloudinary_url
+        annonceCard.attributes.annonceUrl.value = newCardValue.annonceUrl
+
+
+
+
+
+
+        modifModal.classList.remove('activated_modal');
+        setTimeout(() => {
+        modifModal.style.display = "none"
+        }, 500);
+
+
+      })
+
+
+
+
+      const myForm = document.getElementById('form');
+      const image = document.getElementById('file');
+      const libDiv = document.querySelector('.lib');
+      const newCard = libDiv.querySelector('.card_final');
+      const inject = document.querySelector('.card__container');
+
+
+      myForm.addEventListener('submit', async (event) => {
+        event.preventDefault();
+        const formDatax = new FormData(myForm);
+        formDatax.append('image', image.files[0]);
+        formDatax.delete('file');
+
+
+        const response = await fetch("/admin/new",
+          {
+            method: 'POST',
+            body: formDatax
+          }
+        );
+        console.log(response)
+        const result = await response.json();
+        console.log(result)
+        console.log(result.message)
+        console.log(result.data)
+        modal.classList.remove('activated_modal');
+        setTimeout(() => {
+          modal.style.display = "none"
+        }, 500);
+
+
+
+        inputs.forEach(input => {
+          input.value = ""
+        })
+        mailItemTo.innerText = "";
+        textArea.value = "";
+        console.log("new site !!")
+        console.log(result.newSite)
+
+        if (result.newSite != undefined) {
+          const sitewebContainer = document.querySelector('.sites_container');
+          const newSiteUpdate = sitewebContainer.firstElementChild.cloneNode(true);
+          newSiteUpdate.attributes.href = result.newSite.url
+          newSiteUpdate.innerText = result.newSite.name
+          sitewebContainer.appendChild(newSiteUpdate);
+
+        }
+
+        createNewCard(result.data);
+
+      })
+
+      const createNewCard = (data) => {
+
+        const countNumberAll = parseInt(allCounter.innerText);
+        const unvalidNumberCount = parseInt(unvalidatedNumber.innerText);
+        const annonceNumberCount = parseInt(infoAnnonceNumber.innerText);
+        allCounter.innerText = countNumberAll + 1;
+        unvalidatedNumber.innerText = unvalidNumberCount + 1;
+        infoAnnonceNumber.innerText = annonceNumberCount +1;
+
+        const clone = newCard.cloneNode(true);
+        const firstChild = inject.firstChild;
+
+
+        clone.querySelector('.cardCity').innerText = data.city;
+        clone.querySelector('.cardAdress').innerText = data.adress;
+        clone.querySelector('.main_price').innerText = `${data.rentPrice} €`;
+        clone.querySelector('.charge_price').innerText = `${data.chargePrice} €`;
+        clone.querySelector('.card_house_surf').innerText = `${data.houseSurface} m2`;
+        clone.querySelector('.card_garden_surf').innerText = `${data.gardenSurface} m2`;
+        clone.querySelector('.house_image').src = `${data.cloudinary_url ? data.cloudinary_url : "images/house.png"}`;
+        clone.querySelector('.ola').innerText = `${data.date}`
+        clone.querySelector('.hide_proprio_email').innerText = data.contactEmail
+        clone.querySelector('.hide_proprio_name').innerText = data.ownerName
+        clone.querySelector('.hide_proprio_tel').innerText = data.contactPhone
+        clone.querySelector('.delete_annonce').addEventListener('click', function (event) {
+          let theid = data._id;
+          deleteid.innerText = theid;
+          deleteModal.style.display = "flex";
+
+        })
+
+        if (data.visited) {
+          clone.querySelector('.card_vis_image').src = `images/check.svg`;
+        } else {
+          clone.querySelector('.card_vis_image').src = `images/time-left.svg`;
+        }
+        if (data.downloaded) {
+          clone.querySelector('.card_dl_image').src = `images/pdf-file.svg`;
+        } else {
+          clone.querySelector('.card_dl_image').src = `images/time-left.svg`;
+          clone.querySelector('.card_dl_image').setAttribute('isdownloaded', 'false');
+        }
+        clone.setAttribute('dataId', data._id);
+        clone.setAttribute('annonceUrl', data.annonceUrl);
+        inject.insertBefore(clone, firstChild);
+        clone.addEventListener('click', function (event) {
+          event.preventDefault();
+          closeNotifModal();
+          dashSpan.classList.add('actived_span')
+          panelAnimation(this);
+
+        })
+
+        let modifBtn = clone.querySelector('.modif_annonce');
+
+        modifBtn.addEventListener('click', function (event) {
+          let cardIdModif = data._id;
+          handleUpdateCard(cardIdModif);
+        })
+
+        cardsList = cardContainer.querySelectorAll('.card-skel');
+
+        allCards = document.querySelectorAll('.card_final');
+
+
+
+
+
+
+      }
+
+      //formulaire
+
+      const contactEmail = document.querySelector('#contactEmail');
+      const mailItemTo = document.querySelector('.mail_item_to');
+      const annonceUrl = document.querySelector('#annonceUrl');
+      const mailItemObj = document.querySelector('.mail_item_obj');
+
+      contactEmail.addEventListener('keyup', function (event) {
+        let contactEmailValue = contactEmail.value
+        mailItemTo.innerText = contactEmailValue
+
+      })
+
+      annonceUrl.addEventListener('keyup', function (event) {
+        let annonceUrlValue = annonceUrl.value.split('.')[1];
+        if (annonceUrlValue != undefined) {
+          mailItemObj.value = `Annonce ${annonceUrlValue}`
+        }
+
+      })
+
+      const loadFile = function (event) {
+
+        imageLoaded.src = URL.createObjectURL(event.target.files[0]);
+      };
+
+      const loadFileModif = function (event) {
+        document.querySelector('#modif_output').src = URL.createObjectURL(event.target.files[0]);
+        };
+
+
+
+
+
+    </script>
+
+
+
 
 </body>
 

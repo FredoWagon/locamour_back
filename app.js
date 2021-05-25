@@ -14,9 +14,16 @@ require('dotenv').config({ path: '.env' });
 
 const mongoose = require('mongoose');
 
+const { AppError, sendErrorHandler } = require('./lib/utils');
+
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
+const adminRouter = require('./routes/admin')
 const annonce = require('./models/annonce');
+
+
+// CONFIG
+
 
 const port = 3500;
 
@@ -32,10 +39,6 @@ app.use((req, res, next) => {
   res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, PATCH, OPTIONS');
   next();
 });
-
-app.use(bodyParser.urlencoded({ extended: true }));
-
-
 
 
 // view engine setup
@@ -59,66 +62,61 @@ mongoose.connect(process.env.DATABASE,
 
 
 
+
+  // ROUTING
+
+
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
-
-app.use('/bureau', async (req,res,next) => {
-  try {
-    const firstAnnonce = await Annonce.findById('60983295fbf788303fd4d243');
-    console.log(firstAnnonce)
-
-
-
-    res.render('bureau', {firstAnnonce: firstAnnonce})
-
-  } catch (error) {
-    console.log(error)
-
-  }
-
-
+app.use('/admin', adminRouter);
+app.get('/design', (req, res, next) => {
+  res.render('design');
 })
+app.use('/notification', adminRouter);
+app.use('/annonce', adminRouter)
+
+
+// app.all('*', (req, res, next) => {
+//   const err = new Error(`Can't find ${req.originalUrl} on this server!`);
+//   err.status = 'fail';
+//   err.statusCode = 404;
+
+//   next(err);
+// });
 
 
 
-app.use('/pdf', (req, res, next) => {
-  const file = './public/fichier.pdf'
-  res.download(file)
-} )
 
-app.post('/add', async (req, res, next) => {
-try {
-   console.log("/add req.body =>");
-  console.log(req.body.formData);
-  const NouvelleAnnonce = new Annonce(req.body.formData)
-  NouvelleAnnonce.save();
-  await mail(res,"fred");
-
-res.json({message: "Annonce rajouté avec succès!", data: NouvelleAnnonce})
-
-} catch (error) {
-  console.log(error)
-}
-
-})
+// GESTION ERREUR
 
 
-*
 
-// catch 404 and forward to error handler
-app.use(function(req, res, next) {
-  next(createError(404));
+// Système provenant de antivirus
+
+app.use('*', (req, res, next) => {
+  next(new AppError(`Can't find ${req.originalUrl} on this server!`, 404));
 });
 
-// error handler
-app.use(function(err, req, res, next) {
-  // set locals, only providing error in development
-  res.locals.message = err.message;
-  res.locals.error = req.app.get('env') === 'development' ? err : {};
+app.use(sendErrorHandler);
 
-  // render the error page
-  res.status(err.status || 500);
 
-});
+
+
+// // catch 404 and forward to error handler
+// app.use(function(req, res, next) {
+//   console.log('catch 404 and forwatd to error handler')
+//   next(createError(404));
+// });
+
+// // error handler
+// app.use(function(err, req, res, next) {
+//   // set locals, only providing error in development
+//   res.locals.message = err.message;
+//   res.locals.error = req.app.get('env') === 'development' ? err : {};
+
+//   // render the error page
+//   res.status(err.status || 500);
+
+// });
 
 module.exports = app;
