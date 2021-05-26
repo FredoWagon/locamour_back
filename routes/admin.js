@@ -7,6 +7,8 @@ const upload = require('../middleware/multer');
 /* GET home page. */
 router.get('/', adminCtrl.dashboard);
 
+
+
 router.post('/new', upload.single("image"), adminCtrl.newAnnonce)
 router.post('/update', adminCtrl.updateNotif )
 router.post('/archive', adminCtrl.updateAnnonce)

@@ -83,7 +83,7 @@ connectDB();
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
-app.use('/admin', adminRouter);
+app.use('/frebite1234', adminRouter);
 app.get('/design', (req, res, next) => {
   res.render('design');
 })

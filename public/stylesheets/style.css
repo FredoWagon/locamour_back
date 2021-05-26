@@ -19,6 +19,39 @@ a {
   text-decoration: none;
 }
 
+/* INDEX 2 */
+
+.door__container {
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.door__container video {
+  object-fit: cover;
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+}
+
+.door__component {
+  position: relative;
+  z-index: 10;
+}
+.door__container input {
+  outline: none;
+}
+.door__container p {
+  position: absolute;
+  color:white;
+}
+
+
+
 
 .landing__container {
   height: 100vh;

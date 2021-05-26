@@ -6,6 +6,8 @@ const indexCtrl = require('../controllers/index')
 router.get('/', indexCtrl.loadIndex);
 router.get('/index2', indexCtrl.loadIndex2)
 
+router.post('/check', indexCtrl.checkAnnonce);
+
 router.get('/pdf', indexCtrl.sendPdf)
 
 module.exports = router;

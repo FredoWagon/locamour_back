@@ -2,6 +2,7 @@ const { catchAsync } = require('../lib/utils');
 const Annonce = require('../models/annonce')
 const { DateTime } = require("luxon");
 const Notification = require('../models/notifications');
+const cookieParser = require('cookie-parser');
 
 
 
@@ -11,24 +12,39 @@ const loadIndex = catchAsync(async (req, res, next) => {
   const params = req.query.page
   let annonce = ""
 
-  if (params) {
+  if (params && params.match(/^[0-9a-fA-F]{24}$/)) {
     annonce = await Annonce.findOne({_id: params})
     console.log(annonce)
       annonce.visited += 1
       annonce.save();
     Notification.createVisitNotif(annonce);
+    res.render('index', { annonce: annonce });
+  } else {
+    if (params) {
+      res.render('newindex', { errormessage: "Votre code d'accès n'est pas valide." })
+
+    } else {
+      res.render('newindex')
+
+    }
+
+  }
+});
+
+const checkAnnonce = catchAsync( async (req, res, next) => {
+  const data = req.body.annonceId
+  console.log(data)
+  if (data === "frebite1234") {
+    res.status(200).json({ message: "go admin" })
+  } else {
+
+    const annonce = await Annonce.findOne({ _id: data })
+
+    res.status(200).json({ message: "c'est bon" })
   }
 
-  res.render('index', { annonce: annonce });
 
-
-
-
-
-
-
-
-});
+})
 
 const loadIndex2 = catchAsync( async(req, res, next) => {
 
@@ -43,4 +59,4 @@ const sendPdf = catchAsync( async (req, res, next) => {
 })
 
 
-module.exports = { loadIndex, sendPdf, loadIndex2 }
+module.exports = { loadIndex, sendPdf, loadIndex2, checkAnnonce }

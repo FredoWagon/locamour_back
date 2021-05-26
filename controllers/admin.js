@@ -11,6 +11,8 @@ const Site = require('../models/site');
 
 const dashboard = catchAsync(async (req, res, next) => {
 
+  console.log(req.query)
+
 
   const allAnnonces = await Annonce.find({}).sort({ createdAt: -1 });
 

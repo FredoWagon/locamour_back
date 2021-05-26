@@ -16,43 +16,62 @@
     rel="stylesheet">
 
 </head>
-<body style="position: relative;">
+<body>
 
+  <div class="door__container">
+    <video playsinline autoplay muted loop  id="bgvid">
+      <source src="images/videoback.mp4" type="video/mp4">
+    </video>
 
-  <div class="test">
-
-
-
-
-  <div class="index__container">
-    <div class="page__one">
-      <h1>PAGE UNE</h1>
-
-    </div>
-    <div class="page__two">
-      <h2>PAGE two</h2>
+    <div class="door__component">
+      <form id="codeform" >
+      <input type="text" id="code" placeholder="Votre code d'accès" autocomplete='off'>
+      <input type="submit" id="submitbtn" value="Envoyer">
+      <p id="errormessage" ><%= typeof errormessage != 'undefined' ? errormessage : ""  %> </p>
+      </form>
     </div>
 
   </div>
-  </div>
+
 
   <script>
+    const code = document.querySelector('#code');
+    const errormessage = document.querySelector('#errormessage');
+    const submitbtn = document.querySelector('#submitbtn');
+
+    code.addEventListener('click', () => {
+      errormessage.innerText = "";
+
+    })
+
+    submitbtn.addEventListener('click', async (event) => {
+event.preventDefault();
+      const codeValue = code.value
+      console.log(codeValue)
+
+      const reponse = await fetch(`/check`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ annonceId: codeValue })
+      })
+      const response = await reponse.json();
+
+      console.log(response.message)
+
+      if (response.status === 'fail') {
+        errormessage.innerText = "Votre code d'accès n'est pas valide."
+      } else if (response.message == "go admin") {
+        window.location.href = `/frebite1234`
+      } else {
+        window.location.href = `/?page=${codeValue}`
+      }
 
 
-// Mouvement sur le scroll
-const indexContainer = document.querySelector('.index__container');
 
-const moveContainer = () => {
-  const scrollYposition = window.scrollY
-  console.log(scrollYposition)
-    indexContainer.style.transform = `translateY(${scrollYposition}px)`
-
-
-}
-
-  window.addEventListener('scroll', moveContainer, { capture: false });
+    })
 
   </script>
+
 
 </body>
 </html>
