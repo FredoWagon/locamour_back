@@ -4,9 +4,13 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
+  <title>F&B Home</title>
+  <link rel="icon" href="images/house.svg">
   <link rel='stylesheet' type='text/css' href='/stylesheets/style.css' />
   <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;700;800;900&display=swap"
+    rel="stylesheet">
   <link
     href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,400;1,500&display=swap"
     rel="stylesheet">
@@ -16,51 +20,66 @@
       rel="stylesheet">
 
 </head>
-<body>
+<body style="background-color: black;">
+  <div class="loading__backgound">
+
+  </div>
 
 
-  <div class="landing__container">
 
-    <div class="nav_bar">
+  <div class="last__container__index">
+    <div class="paralax__container">
+      <img id="ciel" src="images/ciel2.png" alt="">
+      <img id="potos" src="images/potos.png" alt="">
+      <img id="perso" src="images/perso3.png" alt="">
+    </div>
 
+    <div class="center__title">
+      <div class="center__title__relative">
+        <div class="center__title__absolute">
+          <div id="text1">Bienvenue !</div>
+          <div id="text2">Nous sommes <mark>Barbara & Frédéric</mark>  <br/> et voici notre page de présentation.</div>
+        </div>
+      </div>
+    </div>
+  </div>
 
-      <h6> <%= annonce != "" ? annonce.ownerName : "c'est undi"  %> </h6>
+  <div class="nous_photos">
 
-      <div class="nav_bar__links">
-        <a id="nav_fred_link" href="#fred_anchor" >Frédéric</a>
-        <a id="nav_barb_link" href="#barbara_anchor">Barbara</a>
-        <a>Notre dossier locatif</a>
-
+    <div class="photo_line">
+      <div class="carre">
+        <img src="images/nous6.jpeg" alt="">
+      </div>
+      <div class="carre">
+        <img src="images/nous7.jpeg" alt="">
+      </div>
+      <div class="carre">
+        <img src="images/barb2.jpg" alt="">
       </div>
 
     </div>
-
-    <div class="landing__bloc__one">
-
-      <div class="bloc__one__text">
-<h2>Bonjour ! </h2>
-<p> Nous sommes <a href="#fred_anchor" id="mark-fred">Frédéric</a>  et <a href="#barbara_anchor" id="mark-barb"> Barbara</a>  <br/> et nous sommes à la recherche <br/> d'un nouveau logement</p>
-
-
-<div class="arrow">
-  <img src="images/arrow.svg" alt="">
-
-</div>
-
+    <div class="photo_line">
+      <div class="carre">
+        <img src="images/nous2.jpeg" alt="">
+      </div>
+      <div class="carre">
+        <img style="object-position: top;" src="images/nous1.jpeg" alt="">
+      </div>
+      <div class="carre">
+        <img src="images/nous3.jpeg" alt="">
       </div>
 
-      <div id="main_image"">
-        <img class="image_together" src="images/photo_ensemble.jpeg" alt="">
-
+    </div>
+    <div class="photo_line">
+      <div class="carre">
+        <img src="images/fred1.jpeg" alt="">
       </div>
-
-
-
-
-
-
-
-
+      <div class="carre">
+        <img src="images/nous4.jpeg" alt="">
+      </div>
+      <div class="carre">
+        <img src="images/barb1.jpeg" alt="">
+      </div>
 
     </div>
 
@@ -68,25 +87,31 @@
 
   </div>
 
+  <div class="background_white">
+
+
+
+
+
+
+
 
   <div class="barbara__container">
+    <div id="barb_title">Barbara Allard</div>
 
 
     <div class="barbara__content">
 
-      <div class="barb_pic_box">
-        <img id="barbara_anchor" src="images/barb_profile.jpeg" alt="">
-
-      </div>
-
-
-
       <div class="barbara__text">
 
-        <h5>Barbara Allard</h5>
+
 
         <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Molestiae iusto ducimus voluptatum, provident vitae quia quis temporibus eius, labore quasi veritatis similique reiciendis accusantium dignissimos animi, ab dolorum et nihil.</p>
 
+
+      </div>
+      <div class="barb_pic_box">
+        <img id="barbara_anchor" src="images/barb_profile.jpeg" alt="">
 
       </div>
 
@@ -102,12 +127,17 @@
 
 
   <div class="fred__container">
+    <div id="fred_title">Frédéric Legrand</div>
 
 
     <div class="fred__content">
+      <div class="fred_pic_box">
+        <img id="fred_anchor" src="images/fred_profile.jpeg" alt="">
+
+      </div>
       <div class="fred__text">
 
-        <h5>Frédéric Legrand</h5>
+
 
         <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Molestiae iusto ducimus voluptatum, provident vitae
           quia quis temporibus eius, labore quasi veritatis similique reiciendis accusantium dignissimos animi, ab dolorum
@@ -116,10 +146,7 @@
 
       </div>
 
-      <div class="fred_pic_box">
-        <img id="fred_anchor" src="images/fred_profile.jpeg" alt="">
 
-      </div>
 
 
 
@@ -133,6 +160,7 @@
 
 
 
+  </div>
   </div>
 
 
@@ -167,19 +195,6 @@
 
 <script>
 
-  const image = document.querySelector('.image_together');
-  const text = document.querySelector('.bloc__one__text');
-  const navbar = document.querySelector('.nav_bar');
-
-  document.addEventListener('DOMContentLoaded', (e) => {
-
-    image.classList.add('animation');
-    text.classList.add('animation');
-    navbar.classList.add('animation');
-
-
-  })
-
 
 
 
@@ -191,17 +206,156 @@
 
 
 <script>
-  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function (e) {
-      e.preventDefault();
 
-      document.querySelector(this.getAttribute('href')).scrollIntoView({
-        behavior: 'smooth',
-        inline: "center",
-        block: "center"
-      });
-    });
-  });
+
+
+
+// Page load animation
+
+
+  const potos = document.querySelector('#potos');
+  const gens = document.querySelector('#perso');
+  const ciel = document.querySelector('#ciel');
+
+  const text2 = document.querySelector('#text2');
+  const text1 = document.querySelector('#text1');
+
+
+  //barb
+
+  const barbTitle = document.querySelector('#barb_title');
+  const barbContainer = document.querySelector('.barbara__container');
+
+  const fredTitle = document.querySelector('#fred_title')
+  const fredContainer = document.querySelector('.fred__container')
+
+
+window.addEventListener('DOMContentLoaded', function(event) {
+  const blackScreen = document.querySelector('.loading__backgound');
+  blackScreen.classList.add('desaper');
+  text1.classList.add('movedtext1')
+  gens.classList.add('mobingperso');
+
+
+  setTimeout(() => {
+    blackScreen.style.display = "none";
+
+  }, 3500);
+  setTimeout(() => {
+    text2.classList.add('movedtext2')
+
+
+  }, 2000);
+
+
+
+})
+
+
+// Scroll event !
+
+
+
+window.addEventListener('scroll', function(event) {
+  let scrollPositionY = window.scrollY;
+  console.log(scrollPositionY);
+  potos.style.top =  scrollPositionY * 0.10 + 'px';
+  ciel.style.top = scrollPositionY * 0.30 + 'px';
+})
+
+
+
+
+//animation sur scroll
+
+
+
+  // get the element to animate
+  const barbTitleHeight = barbTitle.clientHeight;
+  const barbContainerHeight = barbContainer.clientHeight
+
+  const nousPhotos = document.querySelector('.nous_photos');
+  const nousPhotosHeight = nousPhotos.clientHeight;
+  const allPictures = document.querySelectorAll('.carre');
+
+  const fredTitleHeight = fredTitle.clientHeight
+  const fredContainerHeight = fredContainer.clientHeight
+
+
+  // listen for scroll event and call animate function
+  document.addEventListener('scroll', inView);
+
+  // check if element is in view
+  function inView() {
+    // get window height
+    var windowHeight = window.innerHeight;
+    // get number of pixels that the document is scrolled
+    var scrollY = window.scrollY || window.pageYOffset;
+
+    // get current scroll position (distance from the top of the page to the bottom of the current viewport)
+    var scrollPosition = scrollY + windowHeight;
+    // get element position (distance from the top of the page to the bottom of the element)
+
+    //barb
+    var barbContainerPosition = barbContainer.getBoundingClientRect().top + scrollY + barbTitleHeight;
+    // nous photo
+    const nousPhotosPosition = nousPhotos.getBoundingClientRect().top + scrollY
+
+    //fred
+    const fredContainerPosition = fredContainer.getBoundingClientRect().top + scrollY + fredTitleHeight;
+
+    // EVENEMENTS
+    //barb
+    if (scrollPosition > barbContainerPosition) {
+      barbContainer.classList.add('active_barbara_container');
+    } else {
+      barbContainer.classList.remove('active_barbara_container')
+    }
+    //nous
+    if (scrollPosition > nousPhotosPosition) {
+      nousPhotos.classList.add('active_nous_photos');
+      allPictures.forEach( image => {
+        setTimeout(() => {
+          image.classList.add('active__care');
+        }, Math.floor(Math.random() * 5000));
+      })
+    } else {
+      nousPhotos.classList.remove('active_nous_photos')
+      allPictures.forEach( image => {
+        image.classList.remove('active__care');
+      })
+
+    }
+
+    //fred
+    if (scrollPosition > fredContainerPosition) {
+      fredContainer.classList.add('active_fred_container');
+    } else {
+      fredContainer.classList.remove('active_fred_container')
+    }
+
+
+
+
+  }
+
+  // animate element when it is in view
+  function animate() {
+    // is element in view?
+    if (inView()) {
+      // element is in view, add class to element
+      barbContainer.classList.add('active_barbara_container');
+    } else {
+      barbContainer.classList.remove('active_barbara_container')
+    }
+  }
+
+
+
+
+
+
+
 </script>
 
 
