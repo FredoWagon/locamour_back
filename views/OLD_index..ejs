@@ -46,9 +46,54 @@
     </div>
   </div>
 
+  <div class="nous_photos">
 
+    <div class="photo_line">
+      <div class="carre">
+        <img src="images/nous6.jpeg" alt="">
+      </div>
+      <div class="carre">
+        <img src="images/nous7.jpeg" alt="">
+      </div>
+      <div class="carre">
+        <img src="images/barb2.jpg" alt="">
+      </div>
+
+    </div>
+    <div class="photo_line">
+      <div class="carre">
+        <img src="images/nous2.jpeg" alt="">
+      </div>
+      <div class="carre">
+        <img style="object-position: top;" src="images/nous1.jpeg" alt="">
+      </div>
+      <div class="carre">
+        <img src="images/nous3.jpeg" alt="">
+      </div>
+
+    </div>
+    <div class="photo_line">
+      <div class="carre">
+        <img src="images/fred1.jpeg" alt="">
+      </div>
+      <div class="carre">
+        <img src="images/nous4.jpeg" alt="">
+      </div>
+      <div class="carre">
+        <img src="images/barb1.jpeg" alt="">
+      </div>
+
+    </div>
+
+
+
+  </div>
 
   <div class="background_white">
+
+
+
+
 
 
 
@@ -124,19 +169,30 @@
     </div>
   </div>
 
-  <% if (annonce.autorized) { %>
 
   <div class="file__container">
+
     <h3>Notre dossier locatif</h3>
-    <a href="/pdf?annonce=<%= annonce._id  %> ">
+
+    <a href="/pdf">
       <div class="download_btn">
         <img src="images/pdf.svg" alt="">
         <p>Télécharger</p>
       </div>
-    </a>
-  </div>
 
-  <% } %>
+
+
+
+    </a>
+
+
+
+
+
+
+
+
+  </div>
 
 
 
@@ -224,9 +280,9 @@
   const barbTitleHeight = barbTitle.clientHeight;
   const barbContainerHeight = barbContainer.clientHeight
 
-  // const nousPhotos = document.querySelector('.nous_photos');
-  // const nousPhotosHeight = nousPhotos.clientHeight;
-  // const allPictures = document.querySelectorAll('.carre');
+  const nousPhotos = document.querySelector('.nous_photos');
+  const nousPhotosHeight = nousPhotos.clientHeight;
+  const allPictures = document.querySelectorAll('.carre');
 
   const fredTitleHeight = fredTitle.clientHeight
   const fredContainerHeight = fredContainer.clientHeight
@@ -249,7 +305,7 @@
     //barb
     var barbContainerPosition = barbContainer.getBoundingClientRect().top + scrollY + barbTitleHeight;
     // nous photo
-    // const nousPhotosPosition = nousPhotos.getBoundingClientRect().top + scrollY
+    const nousPhotosPosition = nousPhotos.getBoundingClientRect().top + scrollY
 
     //fred
     const fredContainerPosition = fredContainer.getBoundingClientRect().top + scrollY + fredTitleHeight;
@@ -262,20 +318,20 @@
       barbContainer.classList.remove('active_barbara_container')
     }
     //nous
-    // if (scrollPosition > nousPhotosPosition) {
-    //   nousPhotos.classList.add('active_nous_photos');
-    //   allPictures.forEach( image => {
-    //     setTimeout(() => {
-    //       image.classList.add('active__care');
-    //     }, Math.floor(Math.random() * 5000));
-    //   })
-    // } else {
-    //   nousPhotos.classList.remove('active_nous_photos')
-    //   allPictures.forEach( image => {
-    //     image.classList.remove('active__care');
-    //   })
+    if (scrollPosition > nousPhotosPosition) {
+      nousPhotos.classList.add('active_nous_photos');
+      allPictures.forEach(image => {
+        setTimeout(() => {
+          image.classList.add('active__care');
+        }, Math.floor(Math.random() * 5000));
+      })
+    } else {
+      nousPhotos.classList.remove('active_nous_photos')
+      allPictures.forEach(image => {
+        image.classList.remove('active__care');
+      })
 
-    // }
+    }
 
     //fred
     if (scrollPosition > fredContainerPosition) {

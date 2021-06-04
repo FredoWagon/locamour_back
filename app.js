@@ -89,6 +89,7 @@ app.get('/design', (req, res, next) => {
 })
 app.use('/notification', adminRouter);
 app.use('/annonce', adminRouter)
+app.use('/', adminRouter)
 
 
 // app.all('*', (req, res, next) => {

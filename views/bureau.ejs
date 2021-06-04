@@ -211,6 +211,7 @@
 
 
             </div>
+            <button id="addOneSite">Ajouter un site</button>
           </div>
 
           <div class="notif_history">
@@ -290,6 +291,21 @@
                 </h3>
                 <p>Charges</p>
               </div>
+
+              <div class="active_certif">
+                <p>Activer dossier</p>
+                <label class="switch">
+                  <input id="certif_input" type="checkbox" annonceid="" >
+                  <span class="slider round"></span>
+                </label>
+
+              </div>
+
+
+
+
+
+
             </div>
 
             <div class="panel__map">
@@ -347,55 +363,62 @@
               <span>Tel : <p class="proprio_tel">0556541254</p></span>
             </div>
 
-            <h5>Notifications</h5>
+            <div class="annonce_message_details">
+              <h5>Détails</h5>
+              <p class="details_info_panel">Mon observation quoi</p>
+            </div>
 
+            <div class="notifications_info_panel">
+                <h5 class="notif_info_btn">Notifications</h5>
 
-
-
-
-
-            <div class="annonce_notif_container">
-              <% allNotif.forEach(notif=> { %>
-                <div class="notification_bloc info_notif_by_annonce" notifAnnonceid="<%=notif.annonceId%>">
-                  <img src="<%= typeof notif.annonceImgUrl != "undefined" ? notif.annonceImgUrl : 'images/house.png' %>"
-                  alt="">
-                  <div class="notification_text">
-                    <div class="text_notif_top">
-                      <h6>
-                        <%= notif.annonceCity%>
-                      </h6>
-                      <p>
-                        <%= notif.annonceAdress%>
-                      </p>
-                    </div>
-                    <div class="text_notif_bottom">
-                      <p>
-                        <%= notif.message %>
+                <div class="annonce_notif_container">
+                  <% allNotif.forEach(notif=> { %>
+                    <div class="notification_bloc info_notif_by_annonce" notifAnnonceid="<%=notif.annonceId%>">
+                      <img src="<%= typeof notif.annonceImgUrl != "undefined" ? notif.annonceImgUrl : 'images/house.png' %>"
+                      alt="">
+                      <div class="notification_text">
+                        <div class="text_notif_top">
+                          <h6>
+                            <%= notif.annonceCity%>
+                          </h6>
                           <p>
-                          <div class="notif_svg">
-                            <img class="card_dl_image" src="<%= notif.notifNature === "visit" ? "images/check.svg"
-                              : "images/pdf-file.svg" %> "
-                            alt="">
-                            <p></p>
-                          </div>
-                    </div>
-                    <p style="display: none;">
-                      <%=notif.annonceId%>
-                    </p>
-                  </div>
+                            <%= notif.annonceAdress%>
+                          </p>
+                        </div>
+                        <div class="text_notif_bottom">
+                          <p>
+                            <%= notif.message %>
+                              <p>
+                              <div class="notif_svg">
+                                <img class="card_dl_image" src="<%= notif.notifNature === "visit" ? "images/check.svg"
+                                  : "images/pdf-file.svg" %> "
+                                alt="">
+                                <p></p>
+                              </div>
+                        </div>
+                        <p style="display: none;">
+                          <%=notif.annonceId%>
+                        </p>
+                      </div>
 
-                  <p id="notifdate">
-                    <%= notif.date.split(' ').splice(0, 2).join(' ')%> </p>
+                      <p id="notifdate">
+                        <%= notif.date.split(' ').splice(0, 2).join(' ')%> </p>
 
 
 
 
-                                            </div>
+                                                            </div>
 
-               <% }); %>
+                               <% }); %>
+
+
+                            </div>
 
 
             </div>
+
+
+
 
           </div>
 
@@ -447,6 +470,9 @@
 
 
 
+
+
+
     </div>
     <div style="display: none;" class="lib">
       <img class="card_dl_image" src="images/check.svg" alt="">
@@ -468,6 +494,13 @@
                 <h6 class="cardCity"> </h6>
                 <span></span>
                 <p class="cardAdress"> </p>
+              </div>
+
+              <div class="social_icons">
+                <img id="social_email" class="" src="images/email.svg"
+                alt="">
+                <img id="social_chat" class="" src="images/chat.svg"
+                alt="">
               </div>
 
 
@@ -497,6 +530,9 @@
                 <h3 class="charge_price"></h3>
                 <p>Charges</p>
               </div>
+              <p id="siteNameInfo">
+
+              </p>
             </div>
             <p class="ola">Ajouter tel jour</p>
           </div>
@@ -522,6 +558,9 @@
           <p class="hide_proprio_name">
 
           </p>
+          <p class="hide_annonce_details">
+
+          </p>
           <p class="hide_proprio_email">
 
           </p>
@@ -529,11 +568,19 @@
 
           </p>
         </div>
+        <img id="certif" class="" src="images/certif.svg" alt="">
       </div>
 
 
 
 
+    </div>
+
+    <div class="modal_add_site">
+      <div class="modal__site__box">
+        <input type="text" name="site" id="site" required>
+        <button class="addSiteBtn">Ajouter</button>
+      </div>
     </div>
 
     <div class="delete_modal">
@@ -570,12 +617,15 @@
       const allnotif = document.querySelectorAll('.newtofifs');
       const notifLength = document.querySelector('.notifLength');
       const refresh = document.querySelector('.svg_refresh');
+      const details = document.querySelector('.details_info_panel');
 
       const notifNumber = document.querySelector('.notif-number');
       const textArea = document.querySelector('#text');
 
       const historyBtn = document.querySelector('.history_btn');
       const activityPanel = document.querySelector('.activity__panel');
+
+      const inputCertif = document.querySelector('#certif_input');
 
 
 
@@ -604,7 +654,83 @@
       const dashSpan = document.querySelector('.dash_span');
       const infoNotifByAnnonce = document.querySelectorAll('.info_notif_by_annonce');
 
+      const hideAnonceDetails = document.querySelector('.hide_annonce_details');
+
       const infoAnnonceNumber = document.querySelector('.info_panel_annonce');
+
+      const notifInfoBtn = document.querySelector('.notif_info_btn');
+      const notificationsInfoPanel = document.querySelector('.notifications_info_panel');
+
+
+      const noteMenu = document.querySelector('#note_menu');
+      const emailMenu = document.querySelector('#email_menu');
+      const emailModal = document.querySelector('.email_text_container');
+
+      const addSiteBtn = document.querySelector('.addSiteBtn');
+      const siteInput2 = document.querySelector('#site');
+
+
+
+      const addOneSite = document.querySelector('#addOneSite');
+      const modalAddSite = document.querySelector('.modal_add_site');
+
+
+      addSiteBtn.addEventListener('click', async (event) => {
+        const newSite = siteInput2.value
+
+        if (newSite != "") {
+          const response = await fetch('/addsite', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ newSite: newSite })
+          })
+          const data = await response.json();
+          console.log(data.name)
+
+
+          const sitewebContainer = document.querySelector('.sites_container');
+          const newSiteUpdate = sitewebContainer.firstElementChild.cloneNode(true);
+          newSiteUpdate.attributes.href = data.data.url
+          newSiteUpdate.innerText = data.data.name
+          sitewebContainer.appendChild(newSiteUpdate);
+
+
+          modalAddSite.classList.remove('active_site_modal');
+          siteInput2.value = "";
+
+
+
+        }
+
+
+
+
+
+      })
+
+
+
+      addOneSite.addEventListener('click', (e) => {
+        modalAddSite.classList.add('active_site_modal');
+
+      })
+
+      noteMenu.addEventListener('click', function(event) {
+        emailMenu.classList.remove('active_input_menu');
+        this.classList.add('active_input_menu');
+        emailModal.classList.remove('active_email_container');
+      })
+
+      emailMenu.addEventListener('click', function(event) {
+        noteMenu.classList.remove('active_input_menu');
+        this.classList.add('active_input_menu');
+        emailModal.classList.add('active_email_container');
+      })
+
+      notifInfoBtn.addEventListener('click', () => {
+        notificationsInfoPanel.classList.toggle('active_info_notif');
+
+      })
 
 
       //modif_modal
@@ -679,6 +805,8 @@
       const closeInfoPanel = () => {
 
         info_panel.style.display = "none"
+        notificationsInfoPanel.classList.remove('active_info_notif');
+
 
 
 
@@ -688,16 +816,18 @@
 
       const InfoPanelAnimation = (card) => {
         let cardId = card.attributes.dataid.value
-        console.log("card id")
-        console.log(cardId)
+        const proprioNameData = card.querySelector('.hide_proprio_name').innerText
+        const proprioEmailData = card.querySelector('.hide_proprio_email').innerText
+        const proprioPhoneData = card.querySelector('.hide_proprio_tel').innerText
 
-        const proprioName = card.querySelector('.hide_proprio_name').innerText
-        const proprioEmail = card.querySelector('.hide_proprio_email').innerText
-        const proprioPhone = card.querySelector('.hide_proprio_tel').innerText
+
+        const proprioName = proprioNameData != "" ? proprioNameData : "pas de nom"
+        const proprioEmail = proprioEmailData != "" ? proprioEmailData : "pas de mail"
+        const proprioPhone = proprioPhoneData != "" ? proprioPhoneData : "pas de téléphone"
 
 
         infoNotifByAnnonce.forEach(notif => {
-          console.log(notif.notifannonceid)
+
           if (cardId != notif.attributes.notifannonceid.value) {
             notif.style.display = "none"
           } else {
@@ -711,6 +841,7 @@
         infoPanelProName.innerText = proprioName
         infoPanelProMail.innerText = proprioEmail
         infoPanelProPhone.innerText = proprioPhone
+        details.innerText = card.querySelector('.hide_annonce_details').innerText
 
 
 
@@ -763,7 +894,7 @@
         }
         )
         const annonce = await response.json();
-        console.log(annonce);
+
 
         document.querySelector('#modif_city').value = annonce.annonce.city
         document.querySelector('#modif_adress').value = annonce.annonce.adress
@@ -848,7 +979,7 @@
 
           switch (true) {
             case this.classList.contains('anonces_all'):
-              console.log("bonjour")
+
               selectAllcard();
 
               break;
@@ -955,10 +1086,15 @@
 
 
       window.addEventListener('click', (event) => {
-        console.log(event.target)
+
+
         if ((!notifBel.contains(event.target)) && (!notifModal.contains(event.target))) {
-          console.log('ola')
+
           closeNotifModal()
+        }
+
+        if (event.target.classList.contains('modal_add_site') ) {
+          modalAddSite.classList.remove('active_site_modal');
         }
 
       })
@@ -987,8 +1123,7 @@
             notifLength.innerText = notifModal.childElementCount;
           }
 
-          console.log("coté client");
-          console.log(notif.attributes.notifid.value)
+
           fetch("/notification/update",
             {
               method: 'POST',
@@ -1094,13 +1229,14 @@
 
       const panelPopulate = (data) => {
         InfoPanelAnimation(data);
-        console.log(data)
+
         //city
         const cityName = data.querySelector('.cardCity').innerText;
         panelCity.innerText = cityName;
         //adress
         const adressName = data.querySelector('.cardAdress').innerText;
         panelAdress.innerText = adressName;
+        inputCertif.attributes.annonceid.value = data.attributes.dataId.value
         //housesurf
         houseSurf.innerText = data.querySelector('.card_house_surf').innerText;
         //gardensurf
@@ -1118,6 +1254,20 @@
         panel_vis_image.attributes.src.value = data.querySelector('.card_vis_image').attributes.src.value;
         //annoncebtn
         panel_annonce_url.href = data.attributes.annonceUrl.value
+
+
+
+
+        if (data.attributes.autorize.value === "true") {
+
+          inputCertif.classList.add('active_input_btn');
+          inputCertif.checked = true
+
+        } else {
+
+          inputCertif.classList.remove('active_input_btn');
+          inputCertif.checked = false
+        }
 
 
 
@@ -1164,7 +1314,7 @@
 
 
       const searchBar = (letter) => {
-        console.log(letter)
+
         activityPanel.style.opacity = "1";
         closeInfoPanel();
         dashSpan.classList.add('actived_span')
@@ -1214,10 +1364,10 @@
         }, 500);
 
         inputs.forEach(input => {
-          input.value = ""
+          input.value = "";
         })
-        textArea.value = ""
-        imageLoaded.src = ""
+        textArea.value = "";
+        imageLoaded.src = "";
 
 
 
@@ -1225,17 +1375,17 @@
 
       modal.addEventListener('mousedown', function (event) {
 
-        console.log(event.target)
+
         if (event.target.classList.contains('modal__box')) {
           modal.classList.remove('activated_modal');
           setTimeout(() => {
             modal.style.display = "none"
           }, 500);
           inputs.forEach(input => {
-            input.value = ""
+            input.value = "";
           })
-          textArea.value = ""
-          imageLoaded.src = ""
+          textArea.value = "";
+          imageLoaded.src = "";
           closeModifModal()
         }
 
@@ -1243,7 +1393,7 @@
 
       modifModal.addEventListener('mousedown', function (event) {
 
-          console.log(event.target)
+
           if (event.target.classList.contains('modal__box')) {
             modifModal.classList.remove('activated_modal');
             setTimeout(() => {
@@ -1260,6 +1410,48 @@
 
 
 
+// lock/unlock DL
+
+
+
+inputCertif.addEventListener('change', async function(event) {
+  const inputValue = this.checked
+  const annonceId = this.attributes.annonceid.value
+
+  if (inputValue) {
+    this.classList.add('active_input_btn');
+  } else {
+    this.classList.remove('active_input_btn')
+  }
+
+  allCards.forEach( card => {
+    if (annonceId == card.attributes.dataId.value) {
+      if (inputValue) {
+        card.querySelector('#certif').classList.add('active_certif_image');
+        card.attributes.autorize.value = "true"
+
+      } else {
+        card.querySelector('#certif').classList.remove('active_certif_image');
+        card.attributes.autorize.value = "false"
+      }
+
+    }
+  })
+
+
+  const response = await fetch('/annonce/updateAnnonce', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ autorized: inputValue,
+    annonceId: annonceId })
+  }
+  )
+  const annonce = await response.json();
+
+
+
+})
+
 
 
 
@@ -1269,10 +1461,11 @@
       const modificationForm = document.getElementById('modif_form');
       const modifImage = document.getElementById('modif_file');
 
+      // MODIFICATION ANNONCE
+
 
       modificationForm.addEventListener('submit', async (event) => {
         event.preventDefault();
-        console.log("ouais c'est submit")
         const formData = new FormData(modificationForm);
         formData.append('image', modifImage.files[0]);
         formData.delete('file');
@@ -1285,12 +1478,11 @@
         );
 
         const result = await response.json();
-        console.log(result)
+
         const newCardValue = result.updatedAnnonce
 
         const annonceCard = document.querySelector(`[dataid='${newCardValue._id}']`);
-        console.log("LA CARTE A CHANGER")
-        console.log(annonceCard)
+
         annonceCard.querySelector('.cardCity').innerText = newCardValue.city
         annonceCard.querySelector('.cardAdress').innerText = newCardValue.adress
         annonceCard.querySelector('.card_house_surf').innerText = newCardValue.houseSurface
@@ -1323,6 +1515,9 @@
       const inject = document.querySelector('.card__container');
 
 
+      /// CREATE ANNONCE
+
+
       myForm.addEventListener('submit', async (event) => {
         event.preventDefault();
         const formDatax = new FormData(myForm);
@@ -1330,17 +1525,15 @@
         formDatax.delete('file');
 
 
-        const response = await fetch("/admin/new",
+        const response = await fetch("/annonce/new",
           {
             method: 'POST',
             body: formDatax
           }
         );
-        console.log(response)
+
         const result = await response.json();
-        console.log(result)
-        console.log(result.message)
-        console.log(result.data)
+
         modal.classList.remove('activated_modal');
         setTimeout(() => {
           modal.style.display = "none"
@@ -1353,17 +1546,9 @@
         })
         mailItemTo.innerText = "";
         textArea.value = "";
-        console.log("new site !!")
-        console.log(result.newSite)
 
-        if (result.newSite != undefined) {
-          const sitewebContainer = document.querySelector('.sites_container');
-          const newSiteUpdate = sitewebContainer.firstElementChild.cloneNode(true);
-          newSiteUpdate.attributes.href = result.newSite.url
-          newSiteUpdate.innerText = result.newSite.name
-          sitewebContainer.appendChild(newSiteUpdate);
 
-        }
+
 
         createNewCard(result.data);
 
@@ -1392,6 +1577,7 @@
         clone.querySelector('.ola').innerText = `${data.date}`
         clone.querySelector('.hide_proprio_email').innerText = data.contactEmail
         clone.querySelector('.hide_proprio_name').innerText = data.ownerName
+        clone.querySelector('.hide_annonce_details').innerText = data.note
         clone.querySelector('.hide_proprio_tel').innerText = data.contactPhone
         clone.querySelector('.delete_annonce').addEventListener('click', function (event) {
           let theid = data._id;
@@ -1399,6 +1585,12 @@
           deleteModal.style.display = "flex";
 
         })
+
+        data.contactEmail != "" ? clone.querySelector('#social_email').classList.add('active_social_icon') : "";
+        data.chatMessage == true ? clone.querySelector('#social_chat').classList.add('active_social_icon') : "";
+
+        clone.querySelector('#siteNameInfo').innerText = data.siteName
+
 
         if (data.visited) {
           clone.querySelector('.card_vis_image').src = `images/check.svg`;
@@ -1412,15 +1604,17 @@
           clone.querySelector('.card_dl_image').setAttribute('isdownloaded', 'false');
         }
         clone.setAttribute('dataId', data._id);
+        clone.setAttribute('autorize', data.autorized);
         clone.setAttribute('annonceUrl', data.annonceUrl);
         inject.insertBefore(clone, firstChild);
         clone.addEventListener('click', function (event) {
           event.preventDefault();
           closeNotifModal();
-          dashSpan.classList.add('actived_span')
+          dashSpan.classList.remove('actived_span');
           panelAnimation(this);
 
         })
+
 
         let modifBtn = clone.querySelector('.modif_annonce');
 

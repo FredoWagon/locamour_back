@@ -53,9 +53,21 @@ const loadIndex2 = catchAsync( async(req, res, next) => {
 })
 
 const sendPdf = catchAsync( async (req, res, next) => {
-  console.log(req.params)
+  const annonceId = req.query.annonce
+  const annonce = await Annonce.findOne({_id: annonceId})
   const file = './public/fichier.pdf'
-  res.download(file)
+  if (annonce.downloaded >= 2) {
+    annonce.downloaded += 1
+    annonce.autorized = false
+    annonce.save();
+    Notification.createDownloadNotif(annonce);
+    res.json({ message: "Limite de téléchargement atteinte." })
+  } else {
+    annonce.downloaded += 1
+    annonce.save();
+    Notification.createDownloadNotif(annonce);
+    res.download(file)
+  }
 })
 
 

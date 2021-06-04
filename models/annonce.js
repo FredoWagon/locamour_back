@@ -19,7 +19,12 @@ const annonceSchema = mongoose.Schema({
   gardenSurface: {type: String, default: "inconnu"},
   cloudinary_url: {type: String},
   date: { type: String, default: DateTime.now().setLocale('fr').toLocaleString(DateTime.DATE_FULL)},
-  archived: {type: Boolean, default: false}
+  archived: {type: Boolean, default: false},
+  autorized: {type: Boolean, default: false},
+  autorizedEmailSent: {type: Boolean, default: false},
+  note: {type: String},
+  siteName: {type: String},
+  chatMessage: {type: Boolean}
 },{ timestamps: true });
 
 

@@ -26,6 +26,19 @@ notificationSchema.statics.createVisitNotif = async function (annonce) {
     newNotification.save();
 };
 
+notificationSchema.statics.createDownloadNotif = async function (annonce) {
+  const newNotification = new this({
+    annonceCity: annonce.city,
+    annonceAdress: annonce.adress,
+    annonceId: annonce._id,
+    data: DateTime.now().setLocale('fr').toFormat('d', 'MMMM'),
+    message: `Le dossier a été téléchargé ${annonce.downloaded} fois !`,
+    annonceImgUrl: annonce.cloudinary_url,
+    notifNature: 'download'
+  })
+  newNotification.save();
+};
+
 notificationSchema.statics.annonceLength = async function () {
   const allNotif = await this.find({});
   const annonceIdList = await allNotif.map(notif => notif.annonceId)

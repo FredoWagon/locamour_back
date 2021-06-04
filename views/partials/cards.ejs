@@ -2,7 +2,7 @@
 
 <!-- .activ_card pour activer une carte-->
 
-<div class="card_final card-skel <%= annonce.archived === true ? "archived_card" : ""  %>" annonceUrl="<%= annonce.annonceUrl  %> " dataId="<%= annonce.id %>">
+<div class="card_final card-skel <%= annonce.archived === true ? "archived_card" : ""  %>" annonceUrl="<%= annonce.annonceUrl  %> " dataId="<%= annonce.id %>" autorize="<%= annonce.autorized ? "true" : "false" %>">
   <img class="house_image"
     src="<%= typeof annonce.cloudinary_url != 'undefined' ? annonce.cloudinary_url : "images/house.png" %>"
     alt="">
@@ -13,6 +13,11 @@
           <h6 class="cardCity"><%= typeof annonce.city !='undefined' ? annonce.city : "" %></h6>
           <span></span>
           <p class="cardAdress"><%= typeof annonce.adress !='undefined' ? annonce.adress : "" %></p>
+        </div>
+
+        <div class="social_icons">
+          <img id="social_email" class="<%= annonce.contactEmail !='' ? "active_social_icon" : ""  %> " src="images/email.svg" alt="">
+          <img id="social_chat" class="<%= annonce.chatMessage == true ? "active_social_icon" : ""  %> " src="images/chat.svg" alt="">
         </div>
 
         <div class="card__options">
@@ -50,6 +55,8 @@
 </div>
 
         <% } %>
+
+        <p id="siteNameInfo" ><%= typeof annonce.siteName !='undefined' ? annonce.siteName : ""  %></p>
 
 
 
@@ -93,10 +100,17 @@
 
 
   <div style="display: none;" class="hidden_info">
+    <p class="hide_annonce_details" > <%= typeof annonce.note != "undefined" ? annonce.note : ""  %> </p>
     <p class="hide_proprio_name"><%= typeof annonce.ownerName !='undefined' ? annonce.ownerName : "Non renseigné"  %></p>
     <p class="hide_proprio_email"><%= typeof annonce.contactEmail !='undefined' ? annonce.contactEmail : "Non renseigné" %></p>
     <p class="hide_proprio_tel"><%= typeof annonce.contactPhone !='undefined' ? annonce.contactPhone : "Non renseigné" %></p>
   </div>
+
+
+
+
+  <img id="certif" class="<%= annonce.autorized ? "active_certif_image" : ""  %> " src="images/certif.svg" alt="">
+
 
 
 

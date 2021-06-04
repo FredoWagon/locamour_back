@@ -6,66 +6,97 @@
 
 
 
-  <div class="input_content">
-    <div class="input_content_title">
-      <img src="images/plus-input.svg" alt="">
-      <h5>Ajouter une annonce :</h5>
-    </div>
-    <input type="text" id="city" name="city" placeholder="Commnune" required>
-    <input type="text" name="adress" id="adress" placeholder="Adresse" required>
-    <input type="text" name="rentPrice" id="rentPrice" placeholder="Prix de location sans charge" required>
-    <input type="text" id="ownerName" name="ownerName" placeholder="Nom du proprio" required>
-    <input type="email" id="contactEmail" name="contactEmail" placeholder="Email du proprio" required>
-    <input type="text" id="contactPhone" name="contactPhone" placeholder="Numéro du proprio">
-    <input type="text" id="chargePrice" name="chargePrice" placeholder="Cout des charges" required>
-    <input type="text" id="houseSurface" name="houseSurface" placeholder="Surface maison" required>
-    <input type="text" id="gardenSurface" name="gardenSurface" placeholder="Surface jardin" required>
-    <input type="text" id="annonceUrl" name="annonceUrl" placeholder="Url de l'annonce" required>
-    <input type="file" name="file" id="file" placeholder="Image" onchange="loadFile(event)">
-    <input type="text" name="site" id="site" placeholder="Ajouter un site d'annonce">
-
-    <img id="output" src="" alt="">
-
-  </div>
-
-
-  <div class="text_input">
-    <div class="mail_head">
-      <div class="mail_head_item">
-        <span>À</span>
-        <p class="mail_item_to" ></p>
+    <div class="input_content">
+      <div class="input_content_title">
+        <img src="images/plus-input.svg" alt="">
+        <h5>Ajouter une annonce :</h5>
       </div>
-      <div class="mail_head_item">
-        <span>Objet</span>
-        <input name="mailObject" class="mail_item_obj" placeholder="Annonce LeBonCoin : N° 56454" required></input>
+      <input type="text" id="city" name="city" placeholder="Commnune" required>
+      <input type="text" name="adress" id="adress" placeholder="Adresse" required>
+      <input type="text" name="rentPrice" id="rentPrice" placeholder="Prix de location sans charge" required>
+      <input type="text" id="ownerName" name="ownerName" placeholder="Nom du proprio">
+      <input type="email" id="contactEmail" name="contactEmail" placeholder="Email du proprio">
+      <input type="text" id="contactPhone" name="contactPhone" placeholder="Numéro du proprio">
+      <input type="text" id="chargePrice" name="chargePrice" placeholder="Cout des charges">
+      <input type="text" id="houseSurface" name="houseSurface" placeholder="Surface maison">
+      <input type="text" id="gardenSurface" name="gardenSurface" placeholder="Surface jardin">
+      <input type="text" id="annonceUrl" name="annonceUrl" placeholder="Url de l'annonce" required>
+      <input type="file" name="file" id="file" placeholder="Image" onchange="loadFile(event)">
+      <!-- <input type="text" name="site" id="site" placeholder="Ajouter un site d'annonce"> -->
+      <input type="text" name="siteName" id="siteName" placeholder="Nom du site" required>
+      <div class="chat_message">
+        <img src="images/chat.svg" alt="">
+        <input type="checkbox" id="chatMessage" name="chatMessage">
+
+
       </div>
+
+
+      <img id="output" src="" alt="">
 
     </div>
 
+    <div class="details_content">
+      <div class="details_top_menu">
+        <img id="note_menu" class="active_input_menu" src="images/note.svg" alt="">
+        <img id="email_menu" src="images/email.svg" alt="">
 
-    <textarea name="texte" id="text" cols="60" rows="25" placeholder="Ecrire le message ici..." required>
-</textarea>
+      </div>
 
-<div class="textarea_custom_placeholder">
-  <p>Nous avons créé un site internet pour notre recherche d'appartement <br/> afin de nous présenter et vous permettre de consulter notre dossier. <br/>
-  <br/>
-  Voici le lien : www.fred-et-barbara.com/?page=4562122354875 <br/>
-  <br/>
-  En attendant d'avoir de vos nouvelles, <br/>
-  nous vous souhaitons une belle journée ! <br/>
-  <br />
-  Fred&Barbara</p>
-</div>
+      <div class="note_content_box">
+
+        <h5>Note d'information supplémentaire</h5>
+
+        <textarea name="note" id="note" cols="60" rows="25" placeholder="Ecrire le message ici..." ></textarea>
+
+
+      </div>
+
+    </div>
+
+    <div class="email_text_container">
+      <div class="text_input">
+        <div class="mail_head">
+          <div class="mail_head_item">
+            <span>À</span>
+            <p class="mail_item_to"></p>
+          </div>
+          <div class="mail_head_item">
+            <span>Objet</span>
+            <input name="mailObject" class="mail_item_obj" placeholder="Annonce LeBonCoin : N° 56454" ></input>
+          </div>
+
+        </div>
+
+
+        <textarea name="texte" id="text" cols="60" rows="25" placeholder="Ecrire le message ici..."></textarea>
+
+        <div class="textarea_custom_placeholder">
+          <p>Nous avons créé un site internet pour notre recherche d'appartement <br /> afin de nous présenter et vous
+            permettre de consulter notre dossier. <br />
+            <br />
+            Voici le lien : www.fred-et-barbara.com/?page=4562122354875 <br />
+            <br />
+            En attendant d'avoir de vos nouvelles, <br />
+            nous vous souhaitons une belle journée ! <br />
+            <br />
+            Fred&Barbara
+          </p>
+        </div>
+      </div>
+
+    </div>
+
+
+
   </div>
-</div>
 
-<div class="button_form_area">
-  <button type="submit">Soumettre</button>
+  <div class="button_form_area">
+    <button type="submit">Soumettre</button>
 
-</div>
+  </div>
 
 
 
 
 </form>
-

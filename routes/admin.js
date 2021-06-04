@@ -15,6 +15,8 @@ router.post('/archive', adminCtrl.updateAnnonce)
 router.post('/getAnnonce', adminCtrl.giveAnnonceInfo)
 router.post('/updateAnnonce', upload.single("image"), adminCtrl.updatedAnnonce)
 
+router.post('/addsite', adminCtrl.createSite )
+
 
 // TEST
 

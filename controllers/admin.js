@@ -1,6 +1,6 @@
 const { catchAsync } = require('../lib/utils')
 const Annonce = require('../models/annonce')
-const { mail } = require('../lib/nodemailer');
+const { mail, certificateMail } = require('../lib/nodemailer');
 const cloudinary = require('../config/cloudinaryConfig');
 const Notification = require("../models/notifications");
 const { DateTime } = require("luxon");
@@ -58,6 +58,25 @@ const dashboard = catchAsync(async (req, res, next) => {
 
 });
 
+const createSite = catchAsync( async (req, res, next) => {
+  console.log(req.body)
+  const newSiteAnnonceUrl = req.body.newSite
+  const newSiteName = newSiteAnnonceUrl.split('.')[1];
+
+
+
+  const newSite = new Site({
+      name: newSiteName,
+      url: newSiteAnnonceUrl
+    })
+    newSite.save();
+    console.log("nouveau site")
+    console.log(newSite)
+
+    res.json({data: newSite})
+
+})
+
 const newAnnonce = catchAsync(async (req, res, next) => {
   console.log("LE BODY")
   console.log(req.body)
@@ -65,25 +84,12 @@ const newAnnonce = catchAsync(async (req, res, next) => {
   const emailText = req.body.texte
   const emailObject = req.body.mailObject
   const input = req.body
-  const newSiteAnnonceUrl = req.body.site
-  const newSiteName = req.body.site.split('.')[1];
-  console.log("new site name")
-  console.log(newSiteName)
-  let newSite
+  console.log(emailObject);
+  console.log(typeof emailObject);
 
-  if (newSiteName != undefined) {
-     newSite = new Site({
-      name: newSiteName,
-      url: newSiteAnnonceUrl
-    })
-    newSite.save();
-    console.log("nouveau site")
-    console.log(newSite)
+  if (input.chatMessage != undefined) {
+    input.chatMessage = true
   }
-
-
-
-
 
 
   if (req.file) {
@@ -99,18 +105,21 @@ const newAnnonce = catchAsync(async (req, res, next) => {
   console.log(NouvelleAnnonce);
   console.log(input)
 
-  const data = {
-    annonce: NouvelleAnnonce,
-    emailText: emailText,
-    mailObject: emailObject
+  if (emailText != "") {
+    const data = {
+      annonce: NouvelleAnnonce,
+      emailText: emailText,
+      mailObject: emailObject
 
+    }
+    console.log(data)
+    await mail(res, { data });
   }
-  console.log(data)
 
 
-  await mail(res, { data });
 
-  res.status(200).json({ message: "Annonce rajouté avec succès!", data: NouvelleAnnonce, newSite: newSite })
+
+  res.status(200).json({ message: "Annonce rajouté avec succès!", data: NouvelleAnnonce })
 
 
 
@@ -153,6 +162,8 @@ const updatedAnnonce = catchAsync( async (req, res, next) => {
   console.log(req.body)
   const annonceId = req.body.annonceId
   const input = req.body
+  const autorizeInput = req.body.autorized
+
 
 
   if (req.file) {
@@ -161,7 +172,25 @@ const updatedAnnonce = catchAsync( async (req, res, next) => {
     input.cloudinary_url = process.env.CLOUDINARY_IMG_URL + result.public_id
   }
 
-  await Annonce.findOneAndUpdate({ _id: annonceId }, input)
+  if (req.body.autorized != undefined) {
+    const annonce = await Annonce.findOne({_id: annonceId})
+    annonce.autorized = autorizeInput
+    if (!annonce.autorizedEmailSent && annonce.contactEmail != "") {
+      const data = {
+        annonce: annonce
+
+      }
+      await certificateMail(res, { data });
+      annonce.autorizedEmailSent = true;
+      annonce.save();
+    } else {
+      annonce.save();
+    }
+  } else {
+    await Annonce.findOneAndUpdate({ _id: annonceId }, input)
+  }
+
+
 
 
   const updatedAnnoce = await Annonce.findOne({_id: annonceId})
@@ -201,4 +230,4 @@ const visitedRatio = async () => {
 
 
 
-module.exports = { dashboard, newAnnonce, getTest, updateNotif, updateAnnonce, giveAnnonceInfo, updatedAnnonce  }
+module.exports = { dashboard, newAnnonce, getTest, updateNotif, updateAnnonce, giveAnnonceInfo, updatedAnnonce, createSite  }
