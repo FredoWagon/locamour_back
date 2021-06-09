@@ -3,113 +3,114 @@
 <!-- .activ_card pour activer une carte-->
 
 <div class="card_final card-skel <%= annonce.archived === true ? "archived_card" : ""  %>" annonceUrl="<%= annonce.annonceUrl  %> " dataId="<%= annonce.id %>" autorize="<%= annonce.autorized ? "true" : "false" %>">
-  <img class="house_image"
-    src="<%= typeof annonce.cloudinary_url != 'undefined' ? annonce.cloudinary_url : "images/house.png" %>"
-    alt="">
-  <div class="card_final__content">
-    <div class="card_final__content__top">
-      <div class="top__title">
-        <div class="top__title__left">
-          <h6 class="cardCity"><%= typeof annonce.city !='undefined' ? annonce.city : "" %></h6>
-          <span></span>
-          <p class="cardAdress"><%= typeof annonce.adress !='undefined' ? annonce.adress : "" %></p>
+    <img class="house_image"
+         src="<%= typeof annonce.cloudinary_url != 'undefined' ? annonce.cloudinary_url : "images/house.png" %>"
+         alt="">
+    <div class="card_final__content">
+        <div class="card_final__content__top">
+            <div class="top__title">
+                <div class="top__title__left">
+                    <h6 class="cardCity"><%= typeof annonce.city !='undefined' ? annonce.city : "" %></h6>
+                    <span></span>
+                    <p class="cardAdress"><%= typeof annonce.adress !='undefined' ? annonce.adress : "" %></p>
+                </div>
+
+                <div class="social_icons">
+                    <img id="social_email" class="<%= annonce.contactEmail !='' ? "active_social_icon" : ""  %> " src="images/email.svg" alt="">
+                    <img id="social_chat" class="<%= annonce.chatMessage == true ? "active_social_icon" : ""  %> " src="images/chat.svg" alt="">
+                    <img id="social_phone" class="<%= annonce.contactPhone !='' ? "active_social_icon" : "" %>" src="images/phone.svg" alt="">
+                </div>
+
+                <div class="card__options">
+                    <img src="images/more.svg" alt="">
+
+                    <div class="options_select" annonce="<%= annonce.id %>">
+                        <p  class="modif_annonce">Modifier</p>
+                        <p class="delete_annonce">Supprimer</p>
+                    </div>
+
+                </div>
+
+
+
+            </div>
+            <div class="bottom__title">
+                <p class="card_house_surf">Maison : <%= typeof annonce.houseSurface !='undefined' ? annonce.houseSurface : "?" %> m2 </p>
+                <p>•</p>
+                <p class="card_garden_surf"> Jardin : <%= typeof annonce.gardenSurface !='undefined' ? annonce.gardenSurface : "?" %> m2</p>
+            </div>
         </div>
+        <div class="card_final__content__bottom">
+            <div class="price__content">
+                <div class="price_area">
+                    <h3 class="main_price"><%= typeof annonce.rentPrice !='undefined' ? annonce.rentPrice : "" %> €</h3>
+                    <p>Loyer</p>
+                </div>
 
-        <div class="social_icons">
-          <img id="social_email" class="<%= annonce.contactEmail !='' ? "active_social_icon" : ""  %> " src="images/email.svg" alt="">
-          <img id="social_chat" class="<%= annonce.chatMessage == true ? "active_social_icon" : ""  %> " src="images/chat.svg" alt="">
+                <% if (typeof annonce.chargePrice !='undefined') { %>
+                    <div class="price_area">
+                        <h3 class="charge_price">
+                            <%= annonce.chargePrice %> €
+                        </h3>
+                        <p>Charges</p>
+                    </div>
+
+                <% } %>
+
+                <p id="siteNameInfo" ><%= typeof annonce.siteName !='undefined' ? annonce.siteName : ""  %></p>
+
+
+
+            </div>
+            <p class="ola"><%=annonce.date%></p>
         </div>
-
-        <div class="card__options">
-<img src="images/more.svg" alt="">
-
-<div class="options_select" annonce="<%= annonce.id %>">
-  <p  class="modif_annonce">Modifier</p>
-  <p class="delete_annonce">Supprimer</p>
-</div>
-
-        </div>
-
-
-
-      </div>
-      <div class="bottom__title">
-        <p class="card_house_surf">Maison : <%= typeof annonce.houseSurface !='undefined' ? annonce.houseSurface : "?" %> m2 </p>
-        <p>•</p>
-        <p class="card_garden_surf"> Jardin : <%= typeof annonce.gardenSurface !='undefined' ? annonce.gardenSurface : "?" %> m2</p>
-      </div>
-    </div>
-    <div class="card_final__content__bottom">
-      <div class="price__content">
-        <div class="price_area">
-          <h3 class="main_price"><%= typeof annonce.rentPrice !='undefined' ? annonce.rentPrice : "" %> €</h3>
-          <p>Loyer</p>
-        </div>
-
-        <% if (typeof annonce.chargePrice !='undefined') { %>
-<div class="price_area">
-  <h3 class="charge_price">
-    <%= annonce.chargePrice %> €
-  </h3>
-  <p>Charges</p>
-</div>
-
-        <% } %>
-
-        <p id="siteNameInfo" ><%= typeof annonce.siteName !='undefined' ? annonce.siteName : ""  %></p>
-
-
-
-      </div>
-      <p class="ola"><%=annonce.date%></p>
-    </div>
-  </div>
-
-  <div class="checked_visitation">
-
-
-      <div class="checked_image">
-        <img class="card_vis_image" src="images/<%= annonce.visited === 0 ? "time-left.svg" : "check.svg"%>" alt="">
-        <p class="card_nmbvis" ><%= annonce.visited %></p>
-
-      </div>
-
-      <div class="checked_image">
-        <img class="card_dl_image" isdownloaded="<%= annonce.downloaded === 0 ? "false" : "true"   %>"  src="images/<%= annonce.downloaded === 0 ? "time-left.svg" : "pdf-file.svg"%>" alt="">
-        <p class="card_nmbdl" ><%= annonce.downloaded %></p>
-
-
-      </div>
-
-
-
-
-
-
-
-  </div>
-
-  <div class="archive_box">
-    <div class="archive-style">
-      <p>Archivé</p>
     </div>
 
-
-  </div>
-
+    <div class="checked_visitation">
 
 
-  <div style="display: none;" class="hidden_info">
-    <p class="hide_annonce_details" > <%= typeof annonce.note != "undefined" ? annonce.note : ""  %> </p>
-    <p class="hide_proprio_name"><%= typeof annonce.ownerName !='undefined' ? annonce.ownerName : "Non renseigné"  %></p>
-    <p class="hide_proprio_email"><%= typeof annonce.contactEmail !='undefined' ? annonce.contactEmail : "Non renseigné" %></p>
-    <p class="hide_proprio_tel"><%= typeof annonce.contactPhone !='undefined' ? annonce.contactPhone : "Non renseigné" %></p>
-  </div>
+        <div class="checked_image">
+            <img class="card_vis_image" src="images/<%= annonce.visited === 0 ? "time-left.svg" : "check.svg"%>" alt="">
+            <p class="card_nmbvis" ><%= annonce.visited %></p>
+
+        </div>
+
+        <div class="checked_image">
+            <img class="card_dl_image" isdownloaded="<%= annonce.downloaded === 0 ? "false" : "true"   %>"  src="images/<%= annonce.downloaded === 0 ? "time-left.svg" : "pdf-file.svg"%>" alt="">
+            <p class="card_nmbdl" ><%= annonce.downloaded %></p>
+
+
+        </div>
 
 
 
 
-  <img id="certif" class="<%= annonce.autorized ? "active_certif_image" : ""  %> " src="images/certif.svg" alt="">
+
+
+
+    </div>
+
+    <div class="archive_box">
+        <div class="archive-style">
+            <p>Archivé</p>
+        </div>
+
+
+    </div>
+
+
+
+    <div style="display: none;" class="hidden_info">
+        <p class="hide_annonce_details" > <%= typeof annonce.note != "undefined" ? annonce.note : ""  %> </p>
+        <p class="hide_proprio_name"><%= typeof annonce.ownerName !='undefined' ? annonce.ownerName : "Non renseigné"  %></p>
+        <p class="hide_proprio_email"><%= typeof annonce.contactEmail !='undefined' ? annonce.contactEmail : "Non renseigné" %></p>
+        <p class="hide_proprio_tel"><%= typeof annonce.contactPhone !='undefined' ? annonce.contactPhone : "Non renseigné" %></p>
+    </div>
+
+
+
+
+    <img id="certif" class="<%= annonce.autorized ? "active_certif_image" : ""  %> " src="images/certif.svg" alt="">
 
 
 

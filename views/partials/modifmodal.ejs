@@ -1,94 +1,99 @@
 <form id="modif_form">
-  <div class="form_container">
-    <div class="input_content">
-      <div class="input_content_title">
-        <img src="images/update.svg" alt="">
-        <h5>Modififer l'annonce :</h5>
-      </div>
+    <div class="form_container">
+        <div class="input_content">
+            <div class="input_content_title">
+                <img src="images/update.svg" alt="">
+                <h5>Modififer l'annonce :</h5>
+            </div>
 
 
-      <div class="modif_content_box">
+            <div class="modif_content_box">
 
-        <div class="modif_left">
-          <div class="input_modif">
-            <label for="city">Ville</label>
-            <input type="text" id="modif_city" name="city" placeholder="Commnune" required>
-          </div>
+                <div class="modif_left">
+                    <div class="input_modif">
+                        <label for="city">Ville</label>
+                        <input type="text" id="modif_city" name="city" placeholder="Commnune" >
+                    </div>
 
-          <div class="input_modif">
-            <label for="adress">Adress</label>
-            <input type="text" name="adress" id="modif_adress" placeholder="Adresse" required>
-          </div>
-          <div class="input_modif">
-            <label for="rentPrice">Loyer</label>
-            <input type="text" name="rentPrice" id="modif_rentPrice" placeholder="Prix de location sans charge" required>
-          </div>
-          <div class="input_modif">
-            <label for="ownerName">Nom proprio</label>
-            <input type="text" id="modif_ownerName" name="ownerName" placeholder="Nom du proprio" required>
-          </div>
-          <div class="input_modif">
-            <label for="contactEmail">Email proprio</label>
-            <input type="email" id="modif_contactEmail" name="contactEmail" placeholder="Email du proprio" required>
-          </div>
-          <div class="input_modif">
-            <label for="contactPhone">Tel proprio</label>
-            <input type="text" id="modif_contactPhone" name="contactPhone" placeholder="Numéro du proprio">
-          </div>
-          <input type="hidden" name="annonceId" id="annonceId">
+                    <div class="input_modif">
+                        <label for="adress">Adress</label>
+                        <input type="text" name="adress" id="modif_adress" placeholder="Adresse" >
+                    </div>
+                    <div class="input_modif">
+                        <label for="rentPrice">Loyer</label>
+                        <input type="text" name="rentPrice" id="modif_rentPrice" placeholder="Prix de location sans charge" >
+                    </div>
+                    <div class="input_modif">
+                        <label for="ownerName">Nom proprio</label>
+                        <input type="text" id="modif_ownerName" name="ownerName" placeholder="Nom du proprio" >
+                    </div>
+                    <div class="input_modif">
+                        <label for="contactEmail">Email proprio</label>
+                        <input type="email" id="modif_contactEmail" name="contactEmail" placeholder="Email du proprio" >
+                    </div>
+                    <div class="input_modif">
+                        <label for="contactPhone">Tel proprio</label>
+                        <input type="text" id="modif_contactPhone" name="contactPhone" placeholder="Numéro du proprio">
+                    </div>
+                    <input type="hidden" name="annonceId" id="annonceId">
+
+                </div>
+
+                <div class="modif_right">
+                    <div class="input_modif">
+                        <label for="chargePrice">Charges</label>
+                        <input type="text" id="modif_chargePrice" name="chargePrice" placeholder="Cout des charges" >
+                    </div>
+                    <div class="input_modif">
+                        <label for="houseSurface">Surface maison</label>
+                        <input type="text" id="modif_houseSurface" name="houseSurface" placeholder="Surface maison" >
+                    </div>
+                    <div class="input_modif">
+                        <label for="gardenSurface">Surface jardin</label>
+                        <input type="text" id="modif_gardenSurface" name="gardenSurface" placeholder="Surface jardin" >
+                    </div>
+                    <div class="input_modif">
+                        <label for="annonceUrl">Url annonce</label>
+                        <input type="text" id="modif_annonceUrl" name="annonceUrl" placeholder="Url de l'annonce" >
+                    </div>
+
+
+
+
+
+
+
+
+
+                    <input type="file" name="file" id="modif_file" placeholder="Image" onchange="loadFileModif(event)">
+                    <input type="text" name="site" id="modif_site" placeholder="Ajouter un site d'annonce">
+
+                    <img id="modif_output" src="" alt="">
+                    <div class="button_form_area">
+                        <button type="submit">Soumettre</button>
+
+                    </div>
+
+                </div>
+
+
+
+
+            </div>
+
+
+
 
         </div>
-
-        <div class="modif_right">
-            <div class="input_modif">
-              <label for="chargePrice">Charges</label>
-              <input type="text" id="modif_chargePrice" name="chargePrice" placeholder="Cout des charges" required>
-            </div>
-            <div class="input_modif">
-              <label for="houseSurface">Surface maison</label>
-              <input type="text" id="modif_houseSurface" name="houseSurface" placeholder="Surface maison" required>
-            </div>
-            <div class="input_modif">
-              <label for="gardenSurface">Surface jardin</label>
-              <input type="text" id="modif_gardenSurface" name="gardenSurface" placeholder="Surface jardin" required>
-            </div>
-            <div class="input_modif">
-              <label for="annonceUrl">Url annonce</label>
-              <input type="text" id="modif_annonceUrl" name="annonceUrl" placeholder="Url de l'annonce" required>
-            </div>
-
-
-
-
-
-
-
-
-
-            <input type="file" name="file" id="modif_file" placeholder="Image" onchange="loadFileModif(event)">
-            <input type="text" name="site" id="modif_site" placeholder="Ajouter un site d'annonce">
-
-            <img id="modif_output" src="" alt="">
-            <div class="button_form_area">
-              <button type="submit">Soumettre</button>
-
-            </div>
+        <div class="input_texte_modif">
+            <h5>Note d'annonces</h5>
+            <textarea name="note" id="modif_text" cols="60" rows="20" placeholder="Ecrire le message ici..." ></textarea>
 
         </div>
-
-
-
-
-      </div>
 
 
 
 
     </div>
-
-
-
-
-
 
 </form>
