@@ -21,9 +21,6 @@ const loadIndex = catchAsync(async (req, res, next) => {
     res.render('index', { annonce: annonce });
   } else {
     if (params) {
-      if (params == "bonjour") {
-        res.render('testindex')
-      }
       res.render('newindex', { errormessage: "Votre code d'accès n'est pas valide." })
 
     } else {
@@ -39,6 +36,8 @@ const checkAnnonce = catchAsync( async (req, res, next) => {
   console.log(data)
   if (data === "frebite1234") {
     res.status(200).json({ message: "go admin" })
+  } else if (data === "bonjour") {
+    res.status(200).json({ message: "go test" })
   } else {
 
     const annonce = await Annonce.findOne({ _id: data })

@@ -84,6 +84,9 @@ connectDB();
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/frebite1234', adminRouter);
+app.use('/bonjour', (req, res, next) => {
+  res.render('testindex')
+})
 app.get('/design', (req, res, next) => {
   res.render('design');
 })

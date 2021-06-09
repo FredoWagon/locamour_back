@@ -78,7 +78,15 @@ event.preventDefault();
         }, 1200);
 
 
-      } else {
+      } else if (response.message == "go test") {
+        formDis.classList.add('active_forme');
+        landingImage.classList.add('active_landing_image');
+        setTimeout(() => {
+          window.location.href = `/bonjour`
+        }, 1200);
+      }
+
+      else {
         formDis.classList.add('active_forme');
         landingImage.classList.add('active_landing_image');
         setTimeout(() => {
