@@ -21,6 +21,9 @@ const loadIndex = catchAsync(async (req, res, next) => {
     res.render('index', { annonce: annonce });
   } else {
     if (params) {
+      if (params == "bonjour") {
+        res.render('testindex')
+      }
       res.render('newindex', { errormessage: "Votre code d'accès n'est pas valide." })
 
     } else {
