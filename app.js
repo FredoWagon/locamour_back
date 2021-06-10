@@ -96,7 +96,7 @@ app.use('/', adminRouter)
 
 app.use('/testdl', (req, res, next) => {
   console.log("test dl ok")
-  const file = './public/fichier.pdf'
+  const file = './public/images/nous2.jpeg'
   res.download(file)
 })
 

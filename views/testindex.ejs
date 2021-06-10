@@ -285,7 +285,7 @@
             alert('la methode share ne marche pas')
 
         } else {
-            const file = new File([responseBlobified], 'test.pdf', { lastModified: new Date().getTime(), type: theBlob.type })
+            const file = new File([responseBlobified], 'test.jpeg', { lastModified: new Date().getTime(), type: 'image/jpeg' })
             await window.navigator.share({files: [file]}); // Will trigger the native "share" feature
 
         }
