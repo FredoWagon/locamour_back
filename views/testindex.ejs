@@ -174,6 +174,7 @@
 
     </div>
     <div class="fred-barb-mobile">
+
         <div class="nous-title-mobile">Frédéric Legrand </div>
 
         <img id="fred_mobile" src="images/fred_profile.jpeg" alt="">
@@ -197,79 +198,46 @@
 
 
         <div class="barbara__content">
-
             <div class="barbara__text">
-
-
-
                 <p> En CDI depuis aout 2020, j’ai la chance de partager ma passion pour la couture avec les clients de chez Ecolaines, en tant que vendeuse de tissus. En parallèle, j’ai débuté une formation en somatopathie. Ancienne animatrice nature, passer du temps au jardin serait un vrai bonheur !</p>
-
-
             </div>
             <div class="barb_pic_box">
                 <img id="barbara_anchor" src="images/barb_profile.jpeg" alt="">
-
             </div>
-
-
         </div>
-
-
-
-
-
-
     </div>
 
 
     <div class="fred__container">
         <div id="fred_title">Frédéric Legrand</div>
-
-
         <div class="fred__content">
             <div class="fred_pic_box">
                 <img id="fred_anchor" src="images/fred_profile.jpeg" alt="">
-
             </div>
             <div class="fred__text">
-
-
-
                 <p>Suite à une reconversion professionnelle, à mon compte depuis plus d’un an en tant que programmeur informatique. Notre petit appartement n’est plus adapté à ma profession, j’ai aujourd’hui besoin d’un vrai bureau pour travailler efficacement. Un terrain serait un plus pour se détendre.</p>
-
-
             </div>
-
-
-
-
-
-
-
-
         </div>
 
-
-
-
-
+            <img class="test-share" src="images/share.svg" alt="">
 
     </div>
+
 </div>
 
 
 
 
 
-    <div class="file__container">
-        <h3>Notre dossier locatif</h3>
-        <a href="#">
-            <div class="download_btn">
-                <img src="images/pdf.svg" alt="">
-                <p>Télécharger</p>
-            </div>
-        </a>
-    </div>
+<div class="file__container">
+    <h3>Notre dossier locatif</h3>
+    <a href="#">
+        <div class="download_btn">
+            <img src="images/pdf.svg" alt="">
+            <p>Télécharger</p>
+        </div>
+    </a>
+</div>
 
 
 
@@ -300,6 +268,46 @@
 
 
 <script>
+
+    const bouton = document.querySelector('.test-share');
+    const fredBouton = document.querySelector('#fred_mobile');
+
+    fredBouton.addEventListener('click', async () => {
+        console.log("click ok")
+
+        const response = await fetch('/testdl');
+        const responseBlobified = response.blob();
+
+        const toShare = {
+            files: [responseBlobified]
+        }
+
+
+        if (navigator.share === undefined) {
+            alert('la methode share ne marche pas')
+
+        } else {
+            alert("la methode share marche !")
+            await window.navigator.share({title: "bonjour",
+            }); // Will trigger the native "share" feature
+
+        }
+
+
+    })
+
+
+    bouton.addEventListener('click', async () => {
+        console.log("click ok")
+
+       const response = await fetch('/testdl');
+        const responseBlobified = response.blob();
+
+
+    })
+
+
+
 
 
 
@@ -341,7 +349,7 @@
 
         }, 2000);
 
-       
+
 
 
 

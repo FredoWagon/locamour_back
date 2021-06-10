@@ -1,3 +1,24 @@
+/* test share */
+
+.test-share {
+  position: absolute;
+  top: 0.2rem;
+  right: 42rem;
+  width: 5rem;
+  opacity: 1;
+  transition: opacity 0.3s ease;
+
+}
+.test-share:hover {
+  opacity: 0.7;
+  transition: opacity 0.3s ease;
+  cursor: pointer;
+
+}
+
+
+
+
 body {
 
   font-family: 'roboto', sans-serif;
@@ -818,6 +839,7 @@ a {
 
 .fred__container {
   background-color: rgb(0, 0, 0);
+  position: relative;
 
   transform: translateY(110px);
   margin-top: 20rem;

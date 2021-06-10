@@ -94,6 +94,12 @@ app.use('/notification', adminRouter);
 app.use('/annonce', adminRouter)
 app.use('/', adminRouter)
 
+app.use('/testdl', (req, res, next) => {
+  console.log("test dl ok")
+  const file = './public/fichier.pdf'
+  res.download(file)
+})
+
 
 // app.all('*', (req, res, next) => {
 //   const err = new Error(`Can't find ${req.originalUrl} on this server!`);
