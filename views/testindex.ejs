@@ -285,8 +285,8 @@
             alert('la methode share ne marche pas')
 
         } else {
-            const file = new File([responseBlobified], "test.pdf");
-            await window.navigator.share({files: file}); // Will trigger the native "share" feature
+            
+            await window.navigator.share({files: responseBlobified}); // Will trigger the native "share" feature
 
         }
 
