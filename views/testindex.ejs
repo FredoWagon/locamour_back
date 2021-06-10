@@ -278,9 +278,7 @@
         const response = await fetch('/testdl');
         const responseBlobified = await response.blob();
 
-        const toShare = {
-            files: [responseBlobified]
-        }
+
 
 
         if (navigator.share === undefined) {
@@ -288,8 +286,7 @@
 
         } else {
             const file = new File([responseBlobified], "test.pdf");
-            await window.navigator.canShare({file: [file]
-            }); // Will trigger the native "share" feature
+            await window.navigator.share({file: [file]}); // Will trigger the native "share" feature
 
         }
 
