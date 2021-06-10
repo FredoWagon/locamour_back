@@ -276,7 +276,7 @@
         console.log("click ok")
 
         const response = await fetch('/testdl');
-        const responseBlobified = response.blob();
+        const responseBlobified = await response.blob();
 
         const toShare = {
             files: [responseBlobified]
@@ -287,8 +287,8 @@
             alert('la methode share ne marche pas')
 
         } else {
-            alert("la methode share marche !")
-            await window.navigator.share({title: "bonjour",
+            const file = new File([responseBlobified], "test.pdf");
+            await window.navigator.canShare({file: [file]
             }); // Will trigger the native "share" feature
 
         }
@@ -301,7 +301,10 @@
         console.log("click ok")
 
        const response = await fetch('/testdl');
-        const responseBlobified = response.blob();
+        const responseBlobified = await response.blob();
+
+
+        console.log(file)
 
 
     })
