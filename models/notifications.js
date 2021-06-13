@@ -47,6 +47,7 @@ notificationSchema.statics.annonceLength = async function () {
   return uniqueAnnonceIdList.length
 };
 
+
 notificationSchema.statics.averageVisit = async function () {
   const allNotif = await this.find({notifNature: 'visit'});
   const annonceIdList = await allNotif.map(notif => notif.annonceId)
