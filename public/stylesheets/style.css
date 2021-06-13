@@ -19,6 +19,7 @@
 
 
 
+
 body {
 
   font-family: 'roboto', sans-serif;
@@ -53,6 +54,10 @@ body {
 
 
 
+}
+
+.mail_item_obj {
+  width: 100%;
 }
 .nous-desktop-section {
   transform: translateY(72rem);
@@ -1480,6 +1485,7 @@ a {
   height: 100%;
   display: flex;
   flex-direction: column;
+  padding-bottom: 12rem;
 
 
 }
@@ -1966,7 +1972,7 @@ input.active_input_btn + .slider:before {
   width: 89%;
 }
 .notifications_info_panel.active_info_notif {
-  height: 20rem;
+  height: 22rem;
   transition: height 0.3s ease;
 }
 .notifications_info_panel.active_info_notif .annonce_notif_container {
@@ -2417,7 +2423,7 @@ input.active_input_btn + .slider:before {
   justify-content: space-between;
   align-items: center;
 
-  padding: 2rem 2rem 0 2rem;
+  padding: 1rem 2rem 0 2rem;
 }
 .panel__bouton a {
   background-color: #F8C952;
@@ -2594,6 +2600,7 @@ input.active_input_btn + .slider:before {
 
 
 .form_container {
+  height: 43rem;
   position: relative;
   display: flex;
   align-items: center;
@@ -2655,6 +2662,7 @@ input.active_input_btn + .slider:before {
 
 .details_content {
   width: 35rem;
+  height: 100%;
 
   display: flex;
   flex-direction: column;

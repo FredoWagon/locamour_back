@@ -28,6 +28,7 @@ const dashboard = catchAsync(async (req, res, next) => {
   const ratio = Math.round(await visitedRatio())
 
   const lesVisites = await Notification.averageVisit();
+  const lesDl = await Notification.averageDl();
   const sites = await Site.find({});
   console.log("all sites");
   console.log(sites)
@@ -50,7 +51,8 @@ const dashboard = catchAsync(async (req, res, next) => {
     time: timeNow,
     ratio: ratio,
     visitNumber: lesVisites,
-    sites: sites
+    sites: sites,
+    DlNumber: lesDl
 
 
   })
@@ -219,12 +221,18 @@ const giveAnnonceInfo = catchAsync( async (req, res, next) => {
 const visitedRatio = async () => {
 
   const allNotifLength = await Notification.annonceLength();
-  console.log(allNotifLength);
-  const allAnnonceLength = await Annonce.find({});
-  console.log(allAnnonceLength.length)
-  const ratio = allNotifLength / allAnnonceLength.length * 100;
-  console.log(ratio)
-  return ratio
+
+  if (allNotifLength !== 0) {
+    console.log(allNotifLength);
+    const allAnnonceLength = await Annonce.find({});
+    console.log(allAnnonceLength.length)
+    const ratio = allNotifLength / allAnnonceLength.length * 100;
+    console.log(ratio)
+    return ratio
+
+  } else {
+    return  0
+  }
 
 }
 

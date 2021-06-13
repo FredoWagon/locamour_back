@@ -219,7 +219,7 @@
             </div>
         </div>
 
-            <img class="test-share" src="images/share.svg" alt="">
+
 
     </div>
 
@@ -273,41 +273,18 @@
     const fredBouton = document.querySelector('#fred_mobile');
 
     fredBouton.addEventListener('click', async () => {
-        console.log("click ok")
 
         const response = await fetch('/testdl');
         const responseBlobified = await response.blob();
 
 
-
-
         if (navigator.share === undefined) {
             alert('la methode share ne marche pas')
-
         } else {
             const file = new File([responseBlobified], 'test.jpeg', { lastModified: new Date().getTime(), type: 'image/jpeg' })
-            await window.navigator.share({files: [file]}); // Will trigger the native "share" feature
-
+            await window.navigator.share({files: [file]});
         }
-
-
     })
-
-
-    bouton.addEventListener('click', async () => {
-        console.log("click ok")
-
-       const response = await fetch('/testdl');
-        const responseBlobified = await response.blob();
-
-
-        console.log(file)
-
-
-    })
-
-
-
 
 
 

@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 const { DateTime } = require("luxon");
+const util = require("util");
 
 
 const notificationSchema = mongoose.Schema({
@@ -14,16 +15,16 @@ const notificationSchema = mongoose.Schema({
 }, { timestamps: true });
 
 notificationSchema.statics.createVisitNotif = async function (annonce) {
-    const newNotification = new this({
-      annonceCity: annonce.city,
-      annonceAdress: annonce.adress,
-      annonceId: annonce._id,
-      data: DateTime.now().setLocale('fr').toFormat('d', 'MMMM'),
-      message: `Cette annonce a été visité ${annonce.visited} fois !`,
-      annonceImgUrl: annonce.cloudinary_url,
-      notifNature: 'visit'
-    })
-    newNotification.save();
+  const newNotification = new this({
+    annonceCity: annonce.city,
+    annonceAdress: annonce.adress,
+    annonceId: annonce._id,
+    data: DateTime.now().setLocale('fr').toFormat('d', 'MMMM'),
+    message: `Cette annonce a été visité ${annonce.visited} fois !`,
+    annonceImgUrl: annonce.cloudinary_url,
+    notifNature: 'visit'
+  })
+  newNotification.save();
 };
 
 notificationSchema.statics.createDownloadNotif = async function (annonce) {
@@ -47,18 +48,33 @@ notificationSchema.statics.annonceLength = async function () {
 };
 
 notificationSchema.statics.averageVisit = async function () {
-  const allNotif = await this.find({});
+  const allNotif = await this.find({notifNature: 'visit'});
   const annonceIdList = await allNotif.map(notif => notif.annonceId)
-
   const uniqueAnnonceIdList = [...new Set(annonceIdList)];
-
   const visitPerAnnonceList = uniqueAnnonceIdList.map( annonce => {
     return annonceIdList.filter(x => x == annonce).length
-  })
+  });
+  if (visitPerAnnonceList.length !== 0) {
+    const averageVisit = (visitPerAnnonceList.reduce( (x,y) => x + y)) / uniqueAnnonceIdList.length;
+    return Math.round(averageVisit * 100 ) / 100
+  } else {
+    return 0
+  }
+};
 
-  const averageVisit = (visitPerAnnonceList.reduce( (x,y) => x + y)) / uniqueAnnonceIdList.length;
-
-  return Math.round(averageVisit * 100 ) / 100
+notificationSchema.statics.averageDl = async function () {
+  const allNotif = await this.find({notifNature: 'download'});
+  const annonceIdList = await allNotif.map(notif => notif.annonceId)
+  const uniqueAnnonceIdList = [...new Set(annonceIdList)];
+  const visitPerAnnonceList = uniqueAnnonceIdList.map( annonce => {
+    return annonceIdList.filter(x => x == annonce).length
+  });
+  if (visitPerAnnonceList.length !== 0) {
+    const averageVisit = (visitPerAnnonceList.reduce( (x,y) => x + y)) / uniqueAnnonceIdList.length;
+    return Math.round(averageVisit * 100 ) / 100
+  } else {
+    return 0
+  }
 
 };
 
